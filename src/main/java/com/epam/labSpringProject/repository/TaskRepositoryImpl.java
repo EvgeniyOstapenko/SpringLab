@@ -28,7 +28,6 @@ public class TaskRepositoryImpl implements TaskRepository {
         dataBase.delete(dataBase.getTaskRepository().stream().allMatch(task -> (task.getId() == taskId)));
     }
 
-    //findAll any parameters??
     @Override
     public List<Task> findTasksByUserId(Long userId) {
         return  dataBase.getTaskRepository().stream()
