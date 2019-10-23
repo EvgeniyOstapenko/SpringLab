@@ -1,9 +1,6 @@
 package com.epam.labSpringProject.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.stereotype.Component;
 
 
@@ -13,7 +10,7 @@ import org.springframework.stereotype.Component;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Task{
-     private long    id;
+     private Long    id;
      private String  description;
      private boolean isDone;
      private long    userId;

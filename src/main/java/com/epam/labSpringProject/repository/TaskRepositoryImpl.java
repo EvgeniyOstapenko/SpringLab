@@ -1,21 +1,22 @@
 package com.epam.labSpringProject.repository;
 
 import com.epam.labSpringProject.model.Task;
-import com.epam.labSpringProject.model.User;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Repository
+@RequiredArgsConstructor
 public class TaskRepositoryImpl implements TaskRepository {
 
-    private DataBase dataBase = new DataBase();
-    private Long idCounter;
+    private DataBase dataBase;
 
     @Override
-    public Task addTask(User user, String description) {
-        return (Task) dataBase.save(new Task(idAutoIncrement(), description, false, user.getId()));
+    public Task addTask(Task task) {
+        return (Task) dataBase.save(task);
     }
 
     @Override
@@ -25,14 +26,15 @@ public class TaskRepositoryImpl implements TaskRepository {
 
     @Override
     public void deleteTaskById(Long taskId) {
-        dataBase.delete(dataBase.getTaskRepository().stream().allMatch(task -> (task.getId() == taskId)));
+        dataBase.delete(dataBase.findAll().stream().allMatch(task -> (task.getId().equals(taskId))));
     }
 
     @Override
     public List<Task> findTasksByUserId(Long userId) {
-        return  dataBase.getTaskRepository().stream()
-                .filter(task -> (task.getUserId() == userId))
+        return  dataBase.findAll().stream()
+                .filter(task -> (task.getId().equals(userId)))
                 .collect(Collectors.toList());
+
     }
 
     @Override
@@ -40,9 +42,4 @@ public class TaskRepositoryImpl implements TaskRepository {
         deleteTaskById(task.getId());
         return (Task) dataBase.save(task);
     }
-
-    private Long idAutoIncrement(){
-        return ++idCounter;
-    }
-
 }

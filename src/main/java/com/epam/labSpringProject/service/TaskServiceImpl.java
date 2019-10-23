@@ -11,16 +11,17 @@ import java.util.List;
 @Service
 public class TaskServiceImpl implements TaskService {
 
-    @Autowired
     private final TaskRepository taskRepository;
 
+    @Autowired
     public TaskServiceImpl(TaskRepository taskRepository) {
         this.taskRepository = taskRepository;
     }
 
     @Override
     public Task createTask(User user, String description) {
-        return taskRepository.addTask(user, description);
+        Task task = new Task(1l, description, false, user.getId());
+        return taskRepository.addTask(task);
     }
 
     @Override

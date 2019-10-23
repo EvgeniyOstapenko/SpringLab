@@ -3,19 +3,25 @@ package com.epam.labSpringProject.controller;
 import com.epam.labSpringProject.model.Task;
 import com.epam.labSpringProject.model.User;
 import com.epam.labSpringProject.service.TaskService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
-public class UserController {
+public class TaskController {
+
     private final TaskService taskService;
 
-    public UserController(TaskService taskService) {
+    @Autowired
+    public TaskController(TaskService taskService) {
         this.taskService = taskService;
     }
 
-    public void createNewTask(User user, String description){
-        Task newTask = taskService.createTask(user, description);
-        System.out.println("A new task has been created : \n" + newTask.getDescription());
+    public Task createNewTask(User user, String description){
+        Task task = taskService.createTask(user, description);
+        System.out.println("A new task has been created : \n" + task.getDescription());
+        return task;
     }
 
     public void deleteTask(Task task) {
@@ -27,10 +33,12 @@ public class UserController {
         System.out.println("Task : " + task + " has been successfully deleted!");
     }
 
-    public void findAllUserTask(User user) {
-        for (Task task : taskService.findAllUserTasks(user)) {
+    public List<Task> findAllUserTask(User user) {
+        List<Task> tasks = taskService.findAllUserTasks(user);
+        for (Task task : tasks) {
              System.out.println(task);
         }
+        return tasks;
     }
 
     public void markTaskComplete(Task task) {

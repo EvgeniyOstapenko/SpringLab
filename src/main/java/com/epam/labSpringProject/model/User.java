@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
-    private long   id;
+    private Long   id;
     private String name;
     private String surname;
     private String email;
