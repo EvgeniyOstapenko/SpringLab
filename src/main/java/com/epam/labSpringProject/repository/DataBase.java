@@ -18,9 +18,7 @@ public class DataBase implements CrudRepository {
 
     @Override
     public Object save(Object entity) {
-        Task task = (Task) entity;
-        System.out.println(task);
-        task.setId(idAutoIncrement());
+        Task task = idAutoIncrement(entity);
         taskRepository.add(task);
         return task;
     }
@@ -83,8 +81,10 @@ public class DataBase implements CrudRepository {
 
     }
 
-    private Long idAutoIncrement(){
-        return ++idCounter;
+    private Task idAutoIncrement(Object o){
+        Task task = (Task) o;
+        task.setId(++idCounter);
+        return task;
     }
 
 }

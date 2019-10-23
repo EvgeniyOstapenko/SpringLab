@@ -12,6 +12,7 @@ import java.util.List;
 public class TaskServiceImpl implements TaskService {
 
     private final TaskRepository taskRepository;
+    private final Long ID = 1l;
 
     @Autowired
     public TaskServiceImpl(TaskRepository taskRepository) {
@@ -20,7 +21,7 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public Task createTask(User user, String description) {
-        Task task = new Task(1l, description, false, user.getId());
+        Task task = new Task(ID, description, false, user.getId());
         return taskRepository.addTask(task);
     }
 

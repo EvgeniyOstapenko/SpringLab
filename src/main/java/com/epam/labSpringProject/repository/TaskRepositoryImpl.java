@@ -9,11 +9,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Repository
-@RequiredArgsConstructor
 public class TaskRepositoryImpl implements TaskRepository {
 
-    @Autowired
     private DataBase dataBase;
+
+    @Autowired
+    public TaskRepositoryImpl(DataBase dataBase) {
+        this.dataBase = dataBase;
+    }
 
     @Override
     public Task addTask(Task task) { ;
