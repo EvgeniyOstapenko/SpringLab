@@ -16,14 +16,17 @@ public class Application {
 
         TaskController taskController = context.getBean(TaskController.class);
 
-        User user = new User();
-//        Task task = taskController.createNewTask(user, "firstTask");
-//        taskController.createNewTask(user, "secondTask");
-//        taskController.findAllUserTask(user);
-//
-//        taskController.markTaskComplete(task);
-//
-//        taskController.findAllUserTask(user);
+        User user1 = new User(0l, "q", "w", "g", "g");
+        User user2 = new User(0l, "q", "w", "g", "g");
+        User user3 = new User(0l, "q", "w", "g", "g");
+
+        Task task = taskController.createNewTask(user1, "firstTask");
+        taskController.createNewTask(user1, "secondTask");
+        taskController.findAllUserTask(user1);
+
+        taskController.markTaskComplete(task);
+
+        taskController.findAllUserTask(user1);
 
     }
 }

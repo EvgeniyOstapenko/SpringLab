@@ -12,10 +12,11 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class TaskRepositoryImpl implements TaskRepository {
 
+    @Autowired
     private DataBase dataBase;
 
     @Override
-    public Task addTask(Task task) {
+    public Task addTask(Task task) { ;
         return (Task) dataBase.save(task);
     }
 
