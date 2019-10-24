@@ -22,7 +22,7 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public Task createTask(User user, String description) {
         Task task = new Task(ID, description, false, user.getId());
-        return taskRepository.addTask(task);
+        return taskRepository.saveTask(task);
     }
 
     @Override

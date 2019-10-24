@@ -1,9 +1,6 @@
 package com.epam.labSpringProject.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.stereotype.Component;
 
 
@@ -12,12 +9,18 @@ import org.springframework.stereotype.Component;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
+@ToString
 public class User {
     private Long   id;
     private String name;
     private String surname;
     private String email;
+    private String number;
     private String password;
 
-
+//    @Override
+//    public String toString() {
+//        return "User: " + name;
+//    }
 }

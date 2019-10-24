@@ -9,9 +9,11 @@ import org.springframework.stereotype.Component;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
+@ToString
 public class Task{
      private Long    id;
      private String  description;
      private boolean isDone;
-     private long    userId;
+     private Long    userId;
 }

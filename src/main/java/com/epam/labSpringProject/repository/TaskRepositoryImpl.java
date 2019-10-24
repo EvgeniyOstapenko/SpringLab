@@ -1,10 +1,10 @@
 package com.epam.labSpringProject.repository;
 
 import com.epam.labSpringProject.model.Task;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 public class TaskRepositoryImpl implements TaskRepository {
 
     private DataBase dataBase;
+    private Long idCounter = 0l;
 
     @Autowired
     public TaskRepositoryImpl(DataBase dataBase) {
@@ -19,31 +20,45 @@ public class TaskRepositoryImpl implements TaskRepository {
     }
 
     @Override
-    public Task addTask(Task task) { ;
-        return (Task) dataBase.save(task);
+    public Task saveTask(Task task) {
+        dataBase.getTaskRepository().add(idAutoIncrement(task));
+        return task;
     }
 
     @Override
     public Task getTaskById(Long taskId) {
-        return (Task) dataBase.findOne(taskId);
+        return  dataBase.getTaskRepository().stream()
+                .filter(task -> (taskId.equals(task.getId())))
+                .findFirst().get();
     }
 
     @Override
     public void deleteTaskById(Long taskId) {
-        dataBase.delete(dataBase.findAll().stream().allMatch(task -> (task.getId().equals(taskId))));
+        dataBase.getTaskRepository()
+                .remove(dataBase.getTaskRepository()
+                                .stream()
+                                .filter(task -> task.getId().equals(taskId))
+                                .findAny().get());
     }
 
     @Override
     public List<Task> findTasksByUserId(Long userId) {
-        return  dataBase.findAll().stream()
-                .filter(task -> (task.getId().equals(userId)))
-                .collect(Collectors.toList());
-
+        return  dataBase.getTaskRepository()
+                        .stream()
+                        .filter(task -> task.getId().equals(userId))
+                        .collect(Collectors.toList());
     }
 
     @Override
-    public Task updateTask(Task task) {
-        deleteTaskById(task.getId());
-        return (Task) dataBase.save(task);
+    public Task updateTask(Task updatedTask) {
+        dataBase.getTaskRepository().removeIf(task -> task.getId().equals(updatedTask.getId()));
+        dataBase.getTaskRepository().add(updatedTask);
+        return updatedTask;
+    }
+
+    private Task idAutoIncrement(Object o){
+        Task task = (Task) o;
+        task.setId(++idCounter);
+        return task;
     }
 }
