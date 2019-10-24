@@ -21,8 +21,9 @@ public class SubscriptionsVerification{
         this.taskService = taskService;
     }
 
-    @Pointcut("execution(public * service.TaskServiceImpl.createTask(..)) " +
-                                          "&& args(user, description,..))")
+    @Pointcut("execution(public * com.epam.labSpringProject.service.TaskServiceImpl.createTask(user, description))" +
+                                          "&& args(user, description)")
+
     public void taskCreation(User user, String description){}
 
     @Before("taskCreation(user, description)")
