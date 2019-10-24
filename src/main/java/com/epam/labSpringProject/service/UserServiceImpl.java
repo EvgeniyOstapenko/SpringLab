@@ -7,6 +7,7 @@ import com.epam.labSpringProject.model.User;
 import com.epam.labSpringProject.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.apache.commons.codec.digest.DigestUtils;
 
 import java.util.NoSuchElementException;
 
@@ -15,6 +16,7 @@ public class UserServiceImpl implements UserService{
 
     private final UserRepository userRepository;
     private final Long ID = 1L;
+    private final String KEY = "secret";
 
     @Autowired
     public UserServiceImpl(UserRepository userRepository) {
@@ -27,7 +29,7 @@ public class UserServiceImpl implements UserService{
         if(userRepository.findUserByEmail(email) != null)
             throw new EmailAlreadyExistException("This email is already in use");
 
-        User user = new User(ID, name, surname, email, number, password);
+        User user = new User(ID, name, surname, email, number, password, "");
         userRepository.saveUser(user);
         System.out.println(user.toString() + " has successfully signed up!");
         return user;
@@ -48,5 +50,12 @@ public class UserServiceImpl implements UserService{
         System.out.println(user.toString()
                                    + " successfully passed the check!");
         return user;
+    }
+
+    @Override
+    public void subscribe(String email) {
+        User user = userRepository.findUserByEmail(email);
+        String generatedKey = DigestUtils.md5Hex(KEY);
+        user.setSubscription(generatedKey);
     }
 }
