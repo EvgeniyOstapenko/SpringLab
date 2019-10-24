@@ -1,6 +1,6 @@
 package com.epam.labSpringProject.service;
 
-import com.epam.labSpringProject.exception.EmailNotExistsException;
+import com.epam.labSpringProject.exception.EmailAlreadyExistException;
 import com.epam.labSpringProject.exception.UserNotFoundException;
 import com.epam.labSpringProject.exception.WrongPasswordException;
 import com.epam.labSpringProject.model.User;
@@ -14,7 +14,7 @@ import java.util.NoSuchElementException;
 public class UserServiceImpl implements UserService{
 
     private final UserRepository userRepository;
-    private final Long ID = 1l;
+    private final Long ID = 1L;
 
     @Autowired
     public UserServiceImpl(UserRepository userRepository) {
@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService{
     public User toRegister(String name, String surname, String email, String number, String password) {
 
         if(userRepository.findUserByEmail(email) != null)
-            throw new EmailNotExistsException("This email is already in use");
+            throw new EmailAlreadyExistException("This email is already in use");
 
         User user = new User(ID, name, surname, email, number, password);
         userRepository.saveUser(user);

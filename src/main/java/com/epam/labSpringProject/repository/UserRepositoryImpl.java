@@ -1,14 +1,16 @@
 package com.epam.labSpringProject.repository;
 
 import com.epam.labSpringProject.model.User;
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
+@Getter
 public class UserRepositoryImpl implements UserRepository {
 
     private DataBase dataBase;
-    private Long idCounter = 0l;
+    private Long idCounter = 0L;
 
     @Autowired
     public UserRepositoryImpl(DataBase dataBase) {
@@ -17,19 +19,15 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User saveUser(User user) {
-        System.out.println(dataBase.getUserRepository().toArray().length);
-        dataBase.getUserRepository().add(idAutoIncrement(user));
-        System.out.println(dataBase.getUserRepository().toArray().length);
+        dataBase.getUsersTable().add(idAutoIncrement(user));
         return user;
     }
 
     @Override
     public User findUserByEmail(String email) {
-        User user1 =  dataBase.getUserRepository().stream()
-                        .filter(user -> email.equals(user.getPassword()))
+        return dataBase.getUsersTable().stream()
+                        .filter(user -> email.equals(user.getEmail()))
                         .findAny().orElse(null);
-        System.out.println(user1);
-        return user1;
     }
 
     private User idAutoIncrement(User user){

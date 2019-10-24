@@ -10,7 +10,7 @@ import java.util.List;
 
 @Component
 @Data
-public class DataBase {
-    private List<Task>  taskRepository = new ArrayList<>();
-    private List<User>  userRepository = new ArrayList<>();
+class DataBase {
+    private List<Task> tasksTable = new ArrayList<>();
+    private List<User> usersTable = new ArrayList<>();
 }

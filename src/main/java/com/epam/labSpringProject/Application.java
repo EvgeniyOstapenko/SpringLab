@@ -24,11 +24,6 @@ public class Application {
                                             "89111750068",
                                             "password");
 
-        User user2 = userController.singUp( "Evgeniy",
-                                            "Ostapenko",
-                                            "evgeniy@ru",
-                                            "89111750068",
-                                            "password");
 
         User user3 = userController.singUp( "Evgeniy",
                                             "Ostapenko",
