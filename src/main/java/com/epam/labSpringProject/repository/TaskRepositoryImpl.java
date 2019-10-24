@@ -4,6 +4,7 @@ import com.epam.labSpringProject.model.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,6 +22,7 @@ public class TaskRepositoryImpl implements TaskRepository {
     @Override
     public Task saveTask(Task task) {
         dataBase.getTasksTable().add(idAutoIncrement(task));
+        System.out.println("TasksTable size" + dataBase.getTasksTable().size());
         return task;
     }
 
@@ -44,7 +46,7 @@ public class TaskRepositoryImpl implements TaskRepository {
     public List<Task> findTasksByUserId(Long userId) {
         return  dataBase.getTasksTable()
                         .stream()
-                        .filter(task -> task.getId().equals(userId))
+                        .filter(task -> task.getUserId().equals(userId)) // return only one element!
                         .collect(Collectors.toList());
     }
 

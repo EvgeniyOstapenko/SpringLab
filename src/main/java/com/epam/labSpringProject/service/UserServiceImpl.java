@@ -47,8 +47,7 @@ public class UserServiceImpl implements UserService{
         if (!password.equals(user.getPassword())) {
             throw new WrongPasswordException("Wrong password");
         }
-        System.out.println(user.toString()
-                                   + " successfully passed the check!");
+        System.out.println(user.toString() + " successfully passed the check!");
         return user;
     }
 
