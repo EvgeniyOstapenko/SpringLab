@@ -18,6 +18,7 @@ public class User {
     private String email;
     private String number;
     private String password;
+    private String subscription;
 
 //    @Override
 //    public String toString() {
