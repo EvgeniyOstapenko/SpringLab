@@ -12,7 +12,7 @@ import java.util.List;
 public class TaskServiceImpl implements TaskService {
 
     private final TaskRepository taskRepository;
-    private final Long ID = 1l;
+    private final Long ID = 1L;
 
     @Autowired
     public TaskServiceImpl(TaskRepository taskRepository) {
@@ -22,12 +22,20 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public Task createTask(User user, String description) {
         Task task = new Task(ID, description, false, user.getId());
+
+        //TODO add checking the same task
+        System.out.println("A new task has been created : \n" + task.getDescription());
         return taskRepository.saveTask(task);
     }
 
     @Override
     public void deleteTask(Task task) throws RuntimeException{
-        taskRepository.deleteTaskById(task.getId());
+        try {
+            taskRepository.deleteTaskById(task.getId());
+        }catch (RuntimeException e){
+            System.out.println(e.getMessage()); //"No task with such ID found!"
+        }
+        System.out.println("Task : " + task + " has been successfully deleted!");
     }
 
     @Override
