@@ -18,12 +18,20 @@ public class Application {
         TaskController taskController = context.getBean(TaskController.class);
         UserController userController = context.getBean(UserController.class);
 
+//        User user1 = new User(0L,
+//                            "Evgeniy",
+//                            "Ostapenko",
+//                            "evgeniy@ru",
+//                            "89111750068",
+//                            "password",
+//                            "");
+
         User user1 = userController.singUp( "Evgeniy",
                                             "Ostapenko",
                                             "evgeniy@ru",
                                             "89111750068",
-                                            "password");
-
+                                            "password" );
+//        userController.getSubscription(user1);
         Task task1 = taskController.createNewTask(user1, "firstTask");
         Task task2 = taskController.createNewTask(user1, "secondTask");
         Task task3 = taskController.createNewTask(user1, "thirdTask");
@@ -50,11 +58,13 @@ public class Application {
 //
 //        taskController.findAllUserTask(user1);
 
-        User user3 = userController.singUp( "Evgeniy",
-                                            "Ostapenko",
-                                            "evgeniy@ru",
-                                            "89111750068",
-                                            "password");
+        User user2 = new User(0L,
+                                "Evgeniy",
+                                "Ostapenko",
+                                "evgeniy@ru",
+                                "89111750068",
+                                "password",
+                                "");
 
     }
 }

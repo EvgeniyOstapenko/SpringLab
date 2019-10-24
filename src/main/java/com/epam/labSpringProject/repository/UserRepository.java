@@ -8,5 +8,4 @@ public interface UserRepository {
 
     User findUserByEmail(String email);
 
-    void subscribe(String userEmail, String promoCode);
 }

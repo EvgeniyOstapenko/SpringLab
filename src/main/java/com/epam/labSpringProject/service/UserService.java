@@ -9,5 +9,5 @@ public interface UserService {
 
     User toEnter(String email, String password);
 
-    void subscribe(String email);
+    void subscribe(User user);
 }

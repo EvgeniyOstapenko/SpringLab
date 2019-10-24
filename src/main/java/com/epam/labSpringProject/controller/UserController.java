@@ -23,4 +23,8 @@ public class UserController {
         User user = userService.toEnter(email, password);
         return user;
     }
+
+    public void getSubscription(User user){
+        userService.subscribe(user);
+    }
 }

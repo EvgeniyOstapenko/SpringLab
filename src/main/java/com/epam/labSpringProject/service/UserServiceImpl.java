@@ -5,9 +5,9 @@ import com.epam.labSpringProject.exception.UserNotFoundException;
 import com.epam.labSpringProject.exception.WrongPasswordException;
 import com.epam.labSpringProject.model.User;
 import com.epam.labSpringProject.repository.UserRepository;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.apache.commons.codec.digest.DigestUtils;
 
 import java.util.NoSuchElementException;
 
@@ -52,8 +52,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void subscribe(String email) {
-        User user = userRepository.findUserByEmail(email);
+    public void subscribe(User currentUser) {
+        User user = userRepository.findUserByEmail(currentUser.getEmail());
         String generatedKey = DigestUtils.md5Hex(KEY);
         user.setSubscription(generatedKey);
     }

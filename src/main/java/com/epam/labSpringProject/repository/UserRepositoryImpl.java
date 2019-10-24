@@ -30,12 +30,6 @@ public class UserRepositoryImpl implements UserRepository {
                         .findAny().orElse(null);
     }
 
-    @Override
-    public void subscribe(String userEmail, String key) {
-        dataBase.getUsersTable().stream()
-                .filter(user -> userEmail.equals(user.getEmail()))
-                .forEach(user -> user.setSubscription(key));
-    }
 
     private User idAutoIncrement(User user){
         user.setId(++idCounter);
