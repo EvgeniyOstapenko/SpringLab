@@ -29,7 +29,7 @@ public class SubscriptionsVerification{
     public void beforeTaskCreation(User user, String description){
         if(user.getSubscription().equals(IS_SUBSCRIBED))
             return;
-        if((long) taskService.findAllUserTasks(user).size() > 10) {
+        if(taskService.findAllUserTasks(user).size() > 10) {
             throw new UnsubscribedUserException("Unsubscribed usage is limited to ten tasks!");
         }
     }
