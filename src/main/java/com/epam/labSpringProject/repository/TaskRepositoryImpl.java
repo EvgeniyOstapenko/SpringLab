@@ -22,7 +22,6 @@ public class TaskRepositoryImpl implements TaskRepository {
     @Override
     public Task saveTask(Task task) {
         dataBase.getTasksTable().add(idAutoIncrement(task));
-        System.out.println("TasksTable size" + dataBase.getTasksTable().size());
         return task;
     }
 

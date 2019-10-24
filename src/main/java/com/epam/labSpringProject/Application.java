@@ -50,11 +50,11 @@ public class Application {
 //
 //        taskController.findAllUserTask(user1);
 
-//        User user3 = userController.singUp( "Evgeniy",
-//                                            "Ostapenko",
-//                                            "evgeniy@ru",
-//                                            "89111750068",
-//                                            "password");
+        User user3 = userController.singUp( "Evgeniy",
+                                            "Ostapenko",
+                                            "evgeniy@ru",
+                                            "89111750068",
+                                            "password");
 
     }
 }

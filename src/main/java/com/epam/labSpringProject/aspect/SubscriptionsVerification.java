@@ -31,7 +31,7 @@ public class SubscriptionsVerification{
            return;
         }
 //        System.out.println("taskService size " + taskService.findAllUserTasks(user).size());
-        if(taskService.findAllUserTasks(user).size() > 10) {
+        if(taskService.findAllUserTasks(user).size() + 1 > MAX_TASKS) {
             throw new UnsubscribedUserException("Unsubscribed usage is limited to ten tasks!");
         }
     }

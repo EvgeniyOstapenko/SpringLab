@@ -40,7 +40,6 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public List<Task> findAllUserTasks(User user) {
-        System.out.println(taskRepository.findTasksByUserId(user.getId()).size());
         return taskRepository.findTasksByUserId(user.getId());
     }
 
