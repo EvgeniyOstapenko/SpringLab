@@ -24,12 +24,10 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public User toRegister(String name, String surname, String email, String number, String password) {
-
-        if(userRepository.findUserByEmail(email) != null)
+    public User toRegister(User user) {
+        if(userRepository.findUserByEmail(user.getEmail()) != null)
             throw new EmailAlreadyExistException("This email is already in use");
 
-        User user = new User(ID, name, surname, email, number, password, "");
         userRepository.saveUser(user);
         System.out.println(user.toString() + " has successfully signed up!");
         return user;

@@ -15,13 +15,12 @@ public class UserController {
         this.userService = userService;
     }
 
-    public User singUp(String name, String surname, String email, String number, String password) {
-        return userService.toRegister(name, surname, email, number, password);
+    public User singUp(User user) {
+        return userService.toRegister(user);
     }
 
     public User singIn(String email, String password) {
-        User user = userService.toEnter(email, password);
-        return user;
+        return  userService.toEnter(email, password);
     }
 
     public void getSubscription(User user){
