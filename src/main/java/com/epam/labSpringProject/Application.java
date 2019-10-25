@@ -23,7 +23,7 @@ public class Application {
                               "password", "");
 
         userController.singUp(user1);
-//        userController.getSubscription(user1);
+        userController.getSubscription(user1);
 
         taskController.createNewTask(new Task(0L, "firstTask", false, user1.getId()));
         taskController.createNewTask(new Task(0L, "secondTask", false, user1.getId()));

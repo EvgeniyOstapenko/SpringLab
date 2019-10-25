@@ -30,7 +30,7 @@ public class UserRepositoryImpl implements UserRepository {
                         .findAny().orElse(null);
     }
 
-    // throw error "such user doesn't exist
+    //TODO to throw error "such user doesn't exist
     @Override
     public User getUserById(Long id) {
         return myDataBase.getUsersTable().stream()
