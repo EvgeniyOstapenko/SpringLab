@@ -3,8 +3,6 @@ package com.epam.labSpringProject.model;
 import lombok.*;
 import org.springframework.stereotype.Component;
 
-
-@Component
 @Getter
 @Setter
 @NoArgsConstructor
