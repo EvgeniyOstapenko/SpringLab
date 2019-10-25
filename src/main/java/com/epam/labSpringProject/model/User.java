@@ -20,8 +20,4 @@ public class User {
     private String password;
     private String subscription;
 
-//    @Override
-//    public String toString() {
-//        return "User: " + name;
-//    }
 }

@@ -9,25 +9,33 @@ import org.springframework.stereotype.Repository;
 @Getter
 public class UserRepositoryImpl implements UserRepository {
 
-    private DataBase dataBase;
+    private MyDataBase myDataBase;
     private Long idCounter = 0L;
 
     @Autowired
-    public UserRepositoryImpl(DataBase dataBase) {
-        this.dataBase = dataBase;
+    public UserRepositoryImpl(MyDataBase myDataBase) {
+        this.myDataBase = myDataBase;
     }
 
     @Override
     public User saveUser(User user) {
-        dataBase.getUsersTable().add(idAutoIncrement(user));
+        myDataBase.getUsersTable().add(idAutoIncrement(user));
         return user;
     }
 
     @Override
     public User findUserByEmail(String email) {
-        return dataBase.getUsersTable().stream()
+        return myDataBase.getUsersTable().stream()
                         .filter(user -> email.equals(user.getEmail()))
                         .findAny().orElse(null);
+    }
+
+    // throw error "such user doesn't exist
+    @Override
+    public User getUserById(Long id) {
+        return myDataBase.getUsersTable().stream()
+                .filter(user -> id.equals(user.getId()))
+                .findFirst().orElse(null);
     }
 
 

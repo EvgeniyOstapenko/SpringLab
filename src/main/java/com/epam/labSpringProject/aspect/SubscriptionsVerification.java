@@ -1,8 +1,10 @@
 package com.epam.labSpringProject.aspect;
 
 import com.epam.labSpringProject.exception.UnsubscribedUserException;
+import com.epam.labSpringProject.model.Task;
 import com.epam.labSpringProject.model.User;
 import com.epam.labSpringProject.service.TaskService;
+import com.epam.labSpringProject.service.UserService;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -12,25 +14,28 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class SubscriptionsVerification{
+
     private TaskService taskService;
+    private final UserService userService;
     private static final String IS_SUBSCRIBED = "5ebe2294ecd0e0f08eab7690d2a6ee69";
     private static final int MAX_TASKS = 10;
 
     @Autowired
-    public SubscriptionsVerification(TaskService taskService) {
+    public SubscriptionsVerification(TaskService taskService, UserService userService) {
         this.taskService = taskService;
+        this.userService = userService;
     }
 
-    @Pointcut("execution(public * com.epam.labSpringProject.service.TaskServiceImpl.createTask(..))" +
-                                          " && args(user, description)")
-    public void taskCreation(User user, String description){}
+    @Pointcut("execution(public * com.epam.labSpringProject.service.TaskServiceImpl.createTask(com.epam.labSpringProject.model.Task))" +
+                                                                       " && args(task)")
+    public void taskCreation(Task task){}
 
-    @Before("taskCreation(user, description)")
-    public void beforeTaskCreation(User user, String description){
+    @Before("taskCreation(task)")
+    public void beforeTaskCreation(Task task){
+        User user = userService.getUserByUserId(task.getUserId());
         if(user.getSubscription().equals(IS_SUBSCRIBED)) {
            return;
         }
-//        System.out.println("taskService size " + taskService.findAllUserTasks(user).size());
         if(taskService.findAllUserTasks(user).size() + 1 > MAX_TASKS) {
             throw new UnsubscribedUserException("Unsubscribed usage is limited to ten tasks!");
         }

@@ -18,8 +18,8 @@ public class TaskController {
         this.taskService = taskService;
     }
 
-    public Task createNewTask(User user, String description){
-        return taskService.createTask(user, description);
+    public Task createNewTask(Task task){
+        return taskService.createTask(task);
     }
 
     public void deleteTask(Task task) {

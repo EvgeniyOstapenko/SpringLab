@@ -55,4 +55,9 @@ public class UserServiceImpl implements UserService{
         String generatedKey = DigestUtils.md5Hex(KEY);
         user.setSubscription(generatedKey);
     }
+
+    @Override
+    public User getUserByUserId(Long userId) {
+        return userRepository.getUserById(userId);
+    }
 }

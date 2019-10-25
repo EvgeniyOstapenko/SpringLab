@@ -10,4 +10,6 @@ public interface UserService {
     User toEnter(User user);
 
     void subscribe(User user);
+
+    User getUserByUserId(Long userId);
 }

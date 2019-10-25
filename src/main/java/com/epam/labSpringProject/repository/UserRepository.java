@@ -8,4 +8,6 @@ public interface UserRepository {
 
     User findUserByEmail(String email);
 
+    User getUserById(Long id);
+
 }

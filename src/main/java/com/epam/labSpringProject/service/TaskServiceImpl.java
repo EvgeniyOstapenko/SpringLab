@@ -20,11 +20,10 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public Task createTask(User user, String description) {
-        Task task = new Task(ID, description, false, user.getId());
+    public Task createTask(Task task) {
 
-        //TODO add checking the same task
-        System.out.println("A new task has been created: " + task.getDescription());
+        //TODO add checking task
+        System.out.println("A new task has been created: " + task);
         return taskRepository.saveTask(task);
     }
 

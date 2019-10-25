@@ -1,6 +1,5 @@
 package com.epam.labSpringProject.repository;
 
-import com.epam.labSpringProject.exception.TaskNotExistException;
 import com.epam.labSpringProject.model.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -11,31 +10,31 @@ import java.util.stream.Collectors;
 @Repository
 public class TaskRepositoryImpl implements TaskRepository {
 
-    private DataBase dataBase;
+    private MyDataBase myDataBase;
     private Long idCounter = 0L;
 
     @Autowired
-    public TaskRepositoryImpl(DataBase dataBase) {
-        this.dataBase = dataBase;
+    public TaskRepositoryImpl(MyDataBase myDataBase) {
+        this.myDataBase = myDataBase;
     }
 
     @Override
     public Task saveTask(Task task) {
-        dataBase.getTasksTable().add(idAutoIncrement(task));
+        myDataBase.getTasksTable().add(idAutoIncrement(task));
         return task;
     }
 
     @Override //TODO throws TaskNotExistException
     public Task getTaskById(Long taskId) {
-        return  dataBase.getTasksTable().stream()
+        return  myDataBase.getTasksTable().stream()
                 .filter(task -> (taskId.equals(task.getId())))
                 .findFirst().orElse(null);
     }
 
     @Override
     public void deleteTaskById(Long taskId) {
-        dataBase.getTasksTable()
-                .remove(dataBase.getTasksTable()
+        myDataBase.getTasksTable()
+                .remove(myDataBase.getTasksTable()
                                 .stream()
                                 .filter(task -> task.getId().equals(taskId))
                                 .findAny().orElse(null));
@@ -43,7 +42,7 @@ public class TaskRepositoryImpl implements TaskRepository {
 
     @Override
     public List<Task> findTasksByUserId(Long userId) {
-        return  dataBase.getTasksTable()
+        return  myDataBase.getTasksTable()
                         .stream()
                         .filter(task -> task.getUserId().equals(userId)) // return only one element!
                         .collect(Collectors.toList());
@@ -51,8 +50,8 @@ public class TaskRepositoryImpl implements TaskRepository {
 
     @Override
     public Task updateTask(Task updatedTask) {
-        dataBase.getTasksTable().removeIf(task -> task.getId().equals(updatedTask.getId()));
-        dataBase.getTasksTable().add(updatedTask);
+        myDataBase.getTasksTable().removeIf(task -> task.getId().equals(updatedTask.getId()));
+        myDataBase.getTasksTable().add(updatedTask);
         return updatedTask;
     }
 

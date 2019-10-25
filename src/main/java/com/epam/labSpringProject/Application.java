@@ -25,17 +25,18 @@ public class Application {
         userController.singUp(user1);
 //        userController.getSubscription(user1);
 
-        Task task1 = taskController.createNewTask(user1, "firstTask");
-        Task task2 = taskController.createNewTask(user1, "secondTask");
-        Task task3 = taskController.createNewTask(user1, "thirdTask");
-        Task task4 = taskController.createNewTask(user1, "forthTask");
-        Task task5 = taskController.createNewTask(user1, "fifthTask");
-        Task task6 = taskController.createNewTask(user1, "sixthTask");
-        Task task7 = taskController.createNewTask(user1, "seventhTask");
-        Task task8 = taskController.createNewTask(user1, "eighthTask");
-        Task task9 = taskController.createNewTask(user1, "ninthTask");
-        Task task10 = taskController.createNewTask(user1, "tenthTask");
-        Task task11 = taskController.createNewTask(user1, "eleventhTask");
+        taskController.createNewTask(new Task(0L, "firstTask", false, user1.getId()));
+        taskController.createNewTask(new Task(0L, "secondTask", false, user1.getId()));
+        taskController.createNewTask(new Task(0L, "thirdTask", false, user1.getId()));
+        taskController.createNewTask(new Task(0L, "forthTask", false, user1.getId()));
+        taskController.createNewTask(new Task(0L, "fifthTask", false, user1.getId()));
+        taskController.createNewTask(new Task(0L, "sixthTask", false, user1.getId()));
+        taskController.createNewTask(new Task(0L, "seventhTask", false, user1.getId()));
+        taskController.createNewTask(new Task(0L, "eighthTask", false, user1.getId()));
+        taskController.createNewTask(new Task(0L, "ninthTask", false, user1.getId()));
+        taskController.createNewTask(new Task(0L, "tenthTask", false, user1.getId()));
+        taskController.createNewTask(new Task(0L, "eleventhTask", false, user1.getId()));
+
 
 //
 //        System.out.println(task1.getId());
