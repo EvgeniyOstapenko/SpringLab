@@ -13,5 +13,6 @@ public class Task{
      private Long    id;
      private String  description;
      private boolean isDone;
+     private Enum    priority;
      private Long    userId;
 }
