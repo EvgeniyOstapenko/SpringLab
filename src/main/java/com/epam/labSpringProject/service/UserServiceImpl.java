@@ -24,25 +24,25 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public User toRegister(User user) {
-        if(userRepository.findUserByEmail(user.getEmail()) != null)
+    public User toRegister(User currentUser) {
+        if(userRepository.findUserByEmail(currentUser.getEmail()) != null)
             throw new EmailAlreadyExistException("This email is already in use");
 
-        userRepository.saveUser(user);
-        System.out.println(user.toString() + " has successfully signed up!");
-        return user;
+        userRepository.saveUser(currentUser);
+        System.out.println(currentUser.toString() + " has successfully signed up!");
+        return currentUser;
     }
 
     @Override
-    public User toEnter(String email, String password) {
+    public User toEnter(User currentUser) {
         User user;
         try{
-            user = userRepository.findUserByEmail(email);
+            user = userRepository.findUserByEmail(currentUser.getEmail());
         }catch (NoSuchElementException e){
             throw new UserNotFoundException("Wrong email");
         }
 
-        if (!password.equals(user.getPassword())) {
+        if (!currentUser.getPassword().equals(user.getPassword())) {
             throw new WrongPasswordException("Wrong password");
         }
         System.out.println(user.toString() + " successfully passed the check!");

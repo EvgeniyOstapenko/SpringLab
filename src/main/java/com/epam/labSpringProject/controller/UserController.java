@@ -19,8 +19,8 @@ public class UserController {
         return userService.toRegister(user);
     }
 
-    public User singIn(String email, String password) {
-        return  userService.toEnter(email, password);
+    public User singIn(User user) {
+        return  userService.toEnter(user);
     }
 
     public void getSubscription(User user){

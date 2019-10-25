@@ -1,5 +1,6 @@
 package com.epam.labSpringProject.repository;
 
+import com.epam.labSpringProject.exception.TaskNotExistException;
 import com.epam.labSpringProject.model.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -24,7 +25,7 @@ public class TaskRepositoryImpl implements TaskRepository {
         return task;
     }
 
-    @Override
+    @Override //TODO throws TaskNotExistException
     public Task getTaskById(Long taskId) {
         return  dataBase.getTasksTable().stream()
                 .filter(task -> (taskId.equals(task.getId())))

@@ -7,7 +7,7 @@ public interface UserService {
 
     User toRegister(User user);
 
-    User toEnter(String email, String password);
+    User toEnter(User user);
 
     void subscribe(User user);
 }
