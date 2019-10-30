@@ -11,6 +11,7 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+
 @Aspect
 @Component
 public class SubscriptionsVerification{
@@ -36,7 +37,7 @@ public class SubscriptionsVerification{
         if(user.getSubscription().equals(IS_SUBSCRIBED)) {
            return;
         }
-        if(taskService.findAllUserTasks(user).size() + 1 > MAX_TASKS) {
+        if(taskService.findAllUserTasks(user).size() >= MAX_TASKS) {
             throw new UnsubscribedUserException("Unsubscribed usage is limited to ten tasks!");
         }
     }

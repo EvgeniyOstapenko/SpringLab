@@ -1,6 +1,6 @@
 package com.epam.labSpringProject.utility;
 
-public enum TasksPriority {
+public enum TaskPriority {
     LOW,
     MEDIUM,
     HIGH,

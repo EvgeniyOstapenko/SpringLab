@@ -1,7 +1,6 @@
 package com.epam.labSpringProject.model;
 
 import lombok.*;
-import org.springframework.stereotype.Component;
 
 @Getter
 @Setter
