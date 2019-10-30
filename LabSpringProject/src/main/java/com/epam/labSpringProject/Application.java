@@ -39,7 +39,7 @@ public class Application {
                 .email("evgeniy@ru")
                 .number("89111750068")
                 .password("password")
-                .userRole(UserRole.ORDINARY_USER)
+                .userRole(UserRole.USER)
                 .subscription(subscription)
                 .build();
 
