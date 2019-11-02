@@ -26,4 +26,13 @@ public class UserController {
     public void getSubscription(User user){
         userService.subscribe(user);
     }
+
+//    public void adminCheck(Secure_module service, User user) {
+//        if(service.isAdmin(user.getUserRole().name())) {
+//            System.out.println("Welcome Admin!");
+//        } else {
+//            throw  new UserRoleException("Go AWAY!");
+//        }
+//
+//    }
 }

@@ -1,11 +1,11 @@
 package com.epam.security_module;
 
 
-public class UserRoleValidation {
+public class SecurityService {
 
     private SecurityStorage securityStorage;
 
-    public UserRoleValidation(SecurityStorage securityStorage) {
+    public SecurityService(SecurityStorage securityStorage) {
         this.securityStorage = securityStorage;
     }
 

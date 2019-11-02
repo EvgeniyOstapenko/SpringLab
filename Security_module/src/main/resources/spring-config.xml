@@ -5,7 +5,7 @@
 
     <bean id="securityStorageBean" class="com.epam.security_module.SecurityStorage"/>
 
-    <bean id="securityBean" class="com.epam.security_moduleUserRoleValidation">
+    <bean id="securityBean" class="com.epam.security_module.SecurityService">
         <constructor-arg name="securityStorage" ref="securityStorageBean"/>
     </bean>
 

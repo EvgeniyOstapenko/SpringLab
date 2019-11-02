@@ -7,14 +7,14 @@ import com.epam.labSpringProject.model.Task;
 import com.epam.labSpringProject.model.User;
 import com.epam.labSpringProject.utility.TaskPriority;
 import com.epam.labSpringProject.utility.UserRole;
+import com.epam.security_module.SecurityService;
 import com.epam.security_module.UnauthorizedAccessAttemptException;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
-import static com.epam.security_module.UserRoleValidation.isValidUserRole;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Application {
 
-    private static String   subscription = "Not subscribed user";
+    private static String subscription = "Not subscribed user";
 
     public static void main(String[] args) {
 
@@ -59,8 +59,13 @@ public class Application {
 //        taskController.createNewTask(new Task(0L, "eleventhTask", false, TaskPriority.MEDIUM, user1.getId()));
 
 
+        ClassPathXmlApplicationContext xmlContext =
+                new ClassPathXmlApplicationContext("spring-config.xml");
+        SecurityService service = xmlContext.getBean(SecurityService.class);
+
+
         try {
-            isValidUserRole(user1.getUserRole().toString());
+            service.isValidUserRole(user1.getUserRole().toString());
         } catch (UnauthorizedAccessAttemptException e) {
             e.printStackTrace();
         }
