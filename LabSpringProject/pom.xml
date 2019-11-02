@@ -27,14 +27,12 @@
 
 
     <dependencies>
-
-<!--        <dependency>-->
-<!--            <groupId>com.walterjwhite.java.dependencies</groupId>-->
-<!--            <artifactId>h2</artifactId>-->
-<!--            <version>0.0.17</version>-->
-<!--            <type>pom</type>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
+        <!--DB-->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.200</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
@@ -42,11 +40,11 @@
             <version>5.2.0.RELEASE</version>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>org.springframework</groupId>-->
-<!--            <artifactId>spring-jdbc</artifactId>-->
-<!--            <version>5.2.0.RELEASE</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>5.2.0.RELEASE</version>
+        </dependency>
 
 <!--        <dependency>-->
 <!--            <groupId>org.springframework</groupId>-->
@@ -60,7 +58,7 @@
             <version>1.18.10</version>
         </dependency>
 
-        <!-- for encoding and decoding -->
+        <!-- for encoding and decoding secret-->
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
@@ -73,13 +71,6 @@
             <artifactId>aspectjweaver</artifactId>
             <version>1.9.4</version>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/aspectj/aspectjrt -->
-<!--        <dependency>-->
-<!--            <groupId>aspectj</groupId>-->
-<!--            <artifactId>aspectjrt</artifactId>-->
-<!--            <version>1.5.4</version>-->
-<!--        </dependency>-->
 
         <!-- my custom module    -->
         <dependency>

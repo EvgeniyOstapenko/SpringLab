@@ -60,7 +60,6 @@ public class Application {
 //        taskController.createNewTask(new Task(0L, "eleventhTask", false, TaskPriority.MEDIUM, user1.getId()));
 
 
-
         user1.setUserRole(UserRole.ADMIN);
         userController.isAdminAuthority(user1);
 
