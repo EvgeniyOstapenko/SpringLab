@@ -15,5 +15,5 @@ public interface UserService {
 
     User getUserByUserId(Long userId);
 
-    void isAdminAuthority(SecurityService service, User user);
+    void isAdminAuthority(User user);
 }

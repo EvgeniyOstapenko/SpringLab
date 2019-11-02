@@ -29,7 +29,7 @@ public class UserController {
         userService.subscribe(user);
     }
 
-    public void isAdminAuthority(SecurityService service, User user) {
-        userService.isAdminAuthority(service, user);
+    public void isAdminAuthority(User user) {
+        userService.isAdminAuthority(user);
     }
 }

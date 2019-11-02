@@ -9,6 +9,7 @@ import com.epam.security_module.SecurityService;
 import com.epam.security_module.UnauthorizedAccessAttemptException;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 
 import java.util.NoSuchElementException;
@@ -63,12 +64,20 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void isAdminAuthority(SecurityService service, User user) {
+    public void isAdminAuthority(User user) {
+        SecurityService service = getSecurityService();
         try {
             service.isValidUserRole(user.getUserRole());
             System.out.println("Welcome admin.");
         } catch (UnauthorizedAccessAttemptException e) {
             e.printStackTrace();
         }
+    }
+
+    private SecurityService getSecurityService() {
+        ClassPathXmlApplicationContext xmlContext =
+                new ClassPathXmlApplicationContext("spring-config.xml");
+        xmlContext.refresh();
+        return xmlContext.getBean(SecurityService.class);
     }
 }

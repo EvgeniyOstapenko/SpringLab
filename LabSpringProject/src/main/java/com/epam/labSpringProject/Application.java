@@ -24,10 +24,6 @@ public class Application {
 
         TaskController taskController = context.getBean(TaskController.class);
         UserController userController = context.getBean(UserController.class);
-        ClassPathXmlApplicationContext xmlContext =
-                new ClassPathXmlApplicationContext("spring-config.xml");
-        xmlContext.refresh();
-        SecurityService service = xmlContext.getBean(SecurityService.class);
 
 
 //        User user1 = new User(0L, "Evgeniy", "Ostapenko",
@@ -65,12 +61,8 @@ public class Application {
 
 
 
-
-
-
-
-//        user1.setUserRole(UserRole.ADMIN);
-        userController.isAdminAuthority(service, user1);
+        user1.setUserRole(UserRole.ADMIN);
+        userController.isAdminAuthority(user1);
 
 
 //
