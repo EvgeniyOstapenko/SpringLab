@@ -9,8 +9,8 @@ public class SecurityService {
         this.securityStorage = securityStorage;
     }
 
-    public boolean isValidUserRole(String userRole) throws UnauthorizedAccessAttemptException {
-        if(userRole.equals(securityStorage.getADMIN())) return true;
+    public boolean isValidUserRole(Object userRole) throws UnauthorizedAccessAttemptException {
+        if(userRole.toString().equals(securityStorage.getADMIN())) return true;
         else throw new UnauthorizedAccessAttemptException("Access is denied!");
     }
 }

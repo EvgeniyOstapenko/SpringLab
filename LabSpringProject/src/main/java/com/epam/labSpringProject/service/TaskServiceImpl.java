@@ -12,7 +12,6 @@ import java.util.List;
 public class TaskServiceImpl implements TaskService {
 
     private final TaskRepository taskRepository;
-    private final Long ID = 1L;
 
     @Autowired
     public TaskServiceImpl(TaskRepository taskRepository) {

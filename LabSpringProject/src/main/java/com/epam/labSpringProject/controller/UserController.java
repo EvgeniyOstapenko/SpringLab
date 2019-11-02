@@ -2,6 +2,8 @@ package com.epam.labSpringProject.controller;
 
 import com.epam.labSpringProject.model.User;
 import com.epam.labSpringProject.service.UserService;
+import com.epam.security_module.SecurityService;
+import com.epam.security_module.UnauthorizedAccessAttemptException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -27,12 +29,7 @@ public class UserController {
         userService.subscribe(user);
     }
 
-//    public void adminCheck(Secure_module service, User user) {
-//        if(service.isAdmin(user.getUserRole().name())) {
-//            System.out.println("Welcome Admin!");
-//        } else {
-//            throw  new UserRoleException("Go AWAY!");
-//        }
-//
-//    }
+    public void isAdminAuthority(SecurityService service, User user) {
+        userService.isAdminAuthority(service, user);
+    }
 }

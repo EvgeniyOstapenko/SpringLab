@@ -2,6 +2,8 @@ package com.epam.labSpringProject.service;
 
 
 import com.epam.labSpringProject.model.User;
+import com.epam.security_module.SecurityService;
+import com.epam.security_module.UnauthorizedAccessAttemptException;
 
 public interface UserService {
 
@@ -12,4 +14,6 @@ public interface UserService {
     void subscribe(User user);
 
     User getUserByUserId(Long userId);
+
+    void isAdminAuthority(SecurityService service, User user);
 }

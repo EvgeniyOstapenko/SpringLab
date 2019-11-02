@@ -8,7 +8,7 @@ import com.epam.labSpringProject.model.User;
 import com.epam.labSpringProject.utility.TaskPriority;
 import com.epam.labSpringProject.utility.UserRole;
 import com.epam.security_module.SecurityService;
-import com.epam.security_module.UnauthorizedAccessAttemptException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -24,6 +24,11 @@ public class Application {
 
         TaskController taskController = context.getBean(TaskController.class);
         UserController userController = context.getBean(UserController.class);
+        ClassPathXmlApplicationContext xmlContext =
+                new ClassPathXmlApplicationContext("spring-config.xml");
+        xmlContext.refresh();
+        SecurityService service = xmlContext.getBean(SecurityService.class);
+
 
 //        User user1 = new User(0L, "Evgeniy", "Ostapenko",
 //                              "evgeniy@ru", "89111750068",
@@ -59,23 +64,19 @@ public class Application {
 //        taskController.createNewTask(new Task(0L, "eleventhTask", false, TaskPriority.MEDIUM, user1.getId()));
 
 
-        ClassPathXmlApplicationContext xmlContext =
-                new ClassPathXmlApplicationContext("spring-config.xml");
-        SecurityService service = xmlContext.getBean(SecurityService.class);
 
 
-        try {
-            service.isValidUserRole(user1.getUserRole().toString());
-        } catch (UnauthorizedAccessAttemptException e) {
-            e.printStackTrace();
-        }
+
+
+
+//        user1.setUserRole(UserRole.ADMIN);
+        userController.isAdminAuthority(service, user1);
 
 
 //
 //        System.out.println(task1.getId());
 //        System.out.println(task2.getId());
 //        System.out.println(task3.getId());
-
 
 
 //        taskController.createNewTask(user1, "secondTask");
