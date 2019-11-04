@@ -23,6 +23,8 @@ public class SimpleDataBaseConfig {
     private String password;
     @Value("schema.sql")
     private Resource schemaScript;
+    @Value("population_script.sql")
+    private Resource population_script;
 
     @Bean
     DataSource dataSource() {
@@ -45,6 +47,7 @@ public class SimpleDataBaseConfig {
     private DatabasePopulator databasePopulator() {
         ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
         populator.addScript(schemaScript);
+        populator.addScript(population_script);
         return populator;
     }
 

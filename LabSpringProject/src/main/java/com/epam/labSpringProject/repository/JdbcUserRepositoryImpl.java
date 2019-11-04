@@ -5,14 +5,18 @@ import org.springframework.beans.factory.annotation.*;
 import org.springframework.jdbc.core.*;
 import org.springframework.stereotype.*;
 
+import java.util.*;
+
 @Repository
 public class JdbcUserRepositoryImpl implements UserRepository {
 
     private final JdbcTemplate jdbcTemplate;
     private String INSERT = "insert into USERS (name, surname, email, number, password, subscription, userRole)"
             + " values(?,?,?,?,?,?,?)";
-    private String FIND_BY_EMAIL = "select id, name, surname, email, number, password,"
+    private String GET_BY_EMAIL = "select id, name, surname, email, number, password,"
             + " subscription, userRole from USERS where email=?";
+    private String GET_BY_ID = "select id, name, surname, email, number, password,"
+            + " subscription, userRole from USERS where id=?";
     private String UPDATE_SUBSCRIPTION = "update USERS set subscription=? where email=?";
 
 
@@ -29,13 +33,16 @@ public class JdbcUserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public User findByEmail(String email) {
-        return jdbcTemplate.queryForObject(FIND_BY_EMAIL, new UserRowMapper(), email);
+    public User getByEmail(String email) {
+        return jdbcTemplate.queryForObject(GET_BY_EMAIL, new UserRowMapper(), email);
     }
 
     @Override
     public User getById(Long id) {
-        return null;
+        return jdbcTemplate.queryForObject(GET_BY_ID, new UserRowMapper(), id);
     }
 
+    public List<User> findAll() {
+        return jdbcTemplate.query("select * from users", new UserRowMapper());
+    }
 }

@@ -33,7 +33,7 @@ public class SubscriptionsVerification{
 
     @Before("taskCreation(task)")
     public void beforeTaskCreation(Task task){
-        User user = userService.getUserByUserId(task.getUserId());
+        User user = userService.getById(task.getUserId());
         if(user.getSubscription().equals(IS_SUBSCRIBED)) {
            return;
         }

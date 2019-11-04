@@ -13,7 +13,7 @@ public interface UserService {
 
     void subscribe(User user);
 
-    User getUserByUserId(Long userId);
+    User getById(Long userId);
 
     void isAdminAuthority(User user);
 }

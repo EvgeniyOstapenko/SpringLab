@@ -32,4 +32,10 @@ public class UserController {
     public void isAdminAuthority(User user) {
         userService.isAdminAuthority(user);
     }
+
+    public User findById(Long id){
+        return userService.getById(id);
+    }
+
+
 }

@@ -5,6 +5,7 @@ import com.epam.labSpringProject.controller.TaskController;
 import com.epam.labSpringProject.controller.UserController;
 import com.epam.labSpringProject.model.Task;
 import com.epam.labSpringProject.model.User;
+import com.epam.labSpringProject.repository.*;
 import com.epam.labSpringProject.utility.TaskPriority;
 import com.epam.labSpringProject.utility.UserRole;
 import com.epam.security_module.SecurityService;
@@ -36,6 +37,10 @@ public class Application {
                 .build();
 
         userController.singUp(user1);
+        System.out.println(userController.findById(1l));
+        System.out.println(userController.findById(2l));
+
+
 //        userController.getSubscription(user1);
 
 //        taskController.createNewTask(new Task(0L, "firstTask", false, TaskPriority.MEDIUM, user1.getId()));

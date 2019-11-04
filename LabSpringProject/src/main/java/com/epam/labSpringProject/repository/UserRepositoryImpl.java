@@ -24,7 +24,7 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public User findByEmail(String email) {
+    public User getByEmail(String email) {
         return myDataBase.getUsersTable().stream()
                         .filter(user -> email.equals(user.getEmail()))
                         .findAny().orElse(null);

@@ -1,6 +1,5 @@
 package com.epam.labSpringProject.service;
 
-import com.epam.labSpringProject.exception.EmailAlreadyExistException;
 import com.epam.labSpringProject.exception.UserNotFoundException;
 import com.epam.labSpringProject.exception.WrongPasswordException;
 import com.epam.labSpringProject.model.User;
@@ -40,7 +39,7 @@ public class UserServiceImpl implements UserService {
     public User toEnter(User currentUser) {
         User user;
         try {
-            user = jdbcUserRepositoryImpl.findByEmail(currentUser.getEmail());
+            user = jdbcUserRepositoryImpl.getByEmail(currentUser.getEmail());
         } catch (NoSuchElementException e) {
             throw new UserNotFoundException("Wrong email");
         }
@@ -54,13 +53,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void subscribe(User currentUser) {
-        User user = jdbcUserRepositoryImpl.findByEmail(currentUser.getEmail());
+        User user = jdbcUserRepositoryImpl.getByEmail(currentUser.getEmail());
         String generatedKey = DigestUtils.md5Hex(KEY);
         user.setSubscription(generatedKey);
     }
 
     @Override
-    public User getUserByUserId(Long userId) {
+    public User getById(Long userId) {
         return jdbcUserRepositoryImpl.getById(userId);
     }
 
