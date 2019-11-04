@@ -37,13 +37,14 @@ public class Application {
                 .build();
 
         userController.singUp(user1);
+        userController.singUp(user1);
         System.out.println(userController.findById(1l));
-        System.out.println(userController.findById(2l));
+//        System.out.println(userController.findById(2l));
 
 
 //        userController.getSubscription(user1);
 
-//        taskController.createNewTask(new Task(0L, "firstTask", false, TaskPriority.MEDIUM, user1.getId()));
+        taskController.createNewTask(new Task(0L, "firstTask", false, TaskPriority.MEDIUM, user1.getId()));
 //        taskController.createNewTask(new Task(0L, "secondTask", false, TaskPriority.MEDIUM, user1.getId()));
 //        taskController.createNewTask(new Task(0L, "thirdTask", false, TaskPriority.MEDIUM, user1.getId()));
 //        taskController.createNewTask(new Task(0L, "forthTask", false, TaskPriority.MEDIUM, user1.getId()));

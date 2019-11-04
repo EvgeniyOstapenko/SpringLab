@@ -47,7 +47,7 @@ public class SimpleDataBaseConfig {
     private DatabasePopulator databasePopulator() {
         ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
         populator.addScript(schemaScript);
-        populator.addScript(population_script);
+//        populator.addScript(population_script);
         return populator;
     }
 

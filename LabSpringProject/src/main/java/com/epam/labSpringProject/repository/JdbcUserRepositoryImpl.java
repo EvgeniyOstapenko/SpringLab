@@ -11,6 +11,7 @@ import java.util.*;
 public class JdbcUserRepositoryImpl implements UserRepository {
 
     private final JdbcTemplate jdbcTemplate;
+
     private String INSERT = "insert into USERS (name, surname, email, number, password, subscription, userRole)"
             + " values(?,?,?,?,?,?,?)";
     private String GET_BY_EMAIL = "select id, name, surname, email, number, password,"

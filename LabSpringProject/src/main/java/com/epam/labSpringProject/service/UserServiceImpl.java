@@ -1,7 +1,6 @@
 package com.epam.labSpringProject.service;
 
-import com.epam.labSpringProject.exception.UserNotFoundException;
-import com.epam.labSpringProject.exception.WrongPasswordException;
+import com.epam.labSpringProject.exception.*;
 import com.epam.labSpringProject.model.User;
 import com.epam.labSpringProject.repository.*;
 import com.epam.security_module.SecurityService;
@@ -27,11 +26,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User toRegister(User currentUser) {
-//        if (jdbcUserRepositoryImpl.findByEmail(currentUser.getEmail()) != null)
+//        if (jdbcUserRepositoryImpl.getByEmail(currentUser.getEmail()) != null)
 //            throw new EmailAlreadyExistException("This email is already in use");
 
         jdbcUserRepositoryImpl.save(currentUser);
-        System.out.println(currentUser.toString() + " has successfully signed up!");
         return currentUser;
     }
 

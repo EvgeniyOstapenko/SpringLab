@@ -1,5 +1,6 @@
 package com.epam.labSpringProject.model;
 
+import com.epam.labSpringProject.utility.*;
 import lombok.*;
 
 @Getter
@@ -12,6 +13,6 @@ public class Task{
      private Long    id;
      private String  description;
      private boolean isDone;
-     private Enum    priority;
+     private TaskPriority priority;
      private Long    userId;
 }

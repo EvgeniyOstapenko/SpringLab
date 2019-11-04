@@ -2,7 +2,7 @@ package com.epam.labSpringProject.service;
 
 import com.epam.labSpringProject.model.Task;
 import com.epam.labSpringProject.model.User;
-import com.epam.labSpringProject.repository.TaskRepository;
+import com.epam.labSpringProject.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +14,7 @@ public class TaskServiceImpl implements TaskService {
     private final TaskRepository taskRepository;
 
     @Autowired
-    public TaskServiceImpl(TaskRepository taskRepository) {
+    public TaskServiceImpl(JdbcTaskRepositoryImpl taskRepository) {
         this.taskRepository = taskRepository;
     }
 
