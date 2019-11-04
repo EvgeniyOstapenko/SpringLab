@@ -11,7 +11,7 @@
     <artifactId>LabSpringProject</artifactId>
     <name>LabSpringProject</name>
 
-<!--it creates a jar-->
+    <!--it creates a jar-->
     <build>
         <plugins>
             <plugin>

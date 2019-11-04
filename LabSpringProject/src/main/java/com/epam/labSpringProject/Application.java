@@ -25,15 +25,6 @@ public class Application {
         TaskController taskController = context.getBean(TaskController.class);
         UserController userController = context.getBean(UserController.class);
 
-
-//        User user1 = new User(0L, "Evgeniy", "Ostapenko",
-//                              "evgeniy@ru", "89111750068",
-//                              "password", "");
-
-//        User user1 = User.builder()
-//                .subscription(subscription)
-//                .build();
-
         User user1 = User.builder()
                 .name("Evgeniy")
                 .surname("Ostapenko")
@@ -47,43 +38,21 @@ public class Application {
         userController.singUp(user1);
 //        userController.getSubscription(user1);
 
-        taskController.createNewTask(new Task(0L, "firstTask", false, TaskPriority.MEDIUM, user1.getId()));
-        taskController.createNewTask(new Task(0L, "secondTask", false, TaskPriority.MEDIUM, user1.getId()));
-        taskController.createNewTask(new Task(0L, "thirdTask", false, TaskPriority.MEDIUM, user1.getId()));
-        taskController.createNewTask(new Task(0L, "forthTask", false, TaskPriority.MEDIUM, user1.getId()));
-        taskController.createNewTask(new Task(0L, "fifthTask", false, TaskPriority.MEDIUM, user1.getId()));
-        taskController.createNewTask(new Task(0L, "sixthTask", false, TaskPriority.MEDIUM, user1.getId()));
-        taskController.createNewTask(new Task(0L, "seventhTask", false, TaskPriority.MEDIUM, user1.getId()));
-        taskController.createNewTask(new Task(0L, "eighthTask", false, TaskPriority.MEDIUM, user1.getId()));
-        taskController.createNewTask(new Task(0L, "ninthTask", false, TaskPriority.MEDIUM, user1.getId()));
-        taskController.createNewTask(new Task(0L, "tenthTask", false, TaskPriority.MEDIUM, user1.getId()));
+//        taskController.createNewTask(new Task(0L, "firstTask", false, TaskPriority.MEDIUM, user1.getId()));
+//        taskController.createNewTask(new Task(0L, "secondTask", false, TaskPriority.MEDIUM, user1.getId()));
+//        taskController.createNewTask(new Task(0L, "thirdTask", false, TaskPriority.MEDIUM, user1.getId()));
+//        taskController.createNewTask(new Task(0L, "forthTask", false, TaskPriority.MEDIUM, user1.getId()));
+//        taskController.createNewTask(new Task(0L, "fifthTask", false, TaskPriority.MEDIUM, user1.getId()));
+//        taskController.createNewTask(new Task(0L, "sixthTask", false, TaskPriority.MEDIUM, user1.getId()));
+//        taskController.createNewTask(new Task(0L, "seventhTask", false, TaskPriority.MEDIUM, user1.getId()));
+//        taskController.createNewTask(new Task(0L, "eighthTask", false, TaskPriority.MEDIUM, user1.getId()));
+//        taskController.createNewTask(new Task(0L, "ninthTask", false, TaskPriority.MEDIUM, user1.getId()));
+//        taskController.createNewTask(new Task(0L, "tenthTask", false, TaskPriority.MEDIUM, user1.getId()));
 //        taskController.createNewTask(new Task(0L, "eleventhTask", false, TaskPriority.MEDIUM, user1.getId()));
 
 
-        user1.setUserRole(UserRole.ADMIN);
-        userController.isAdminAuthority(user1);
+//        user1.setUserRole(UserRole.ADMIN);
+//        userController.isAdminAuthority(user1);
 
-
-//
-//        System.out.println(task1.getId());
-//        System.out.println(task2.getId());
-//        System.out.println(task3.getId());
-
-
-//        taskController.createNewTask(user1, "secondTask");
-//        taskController.findAllUserTask(user1);
-//
-//        taskController.markTaskComplete(task1);
-//
-//        taskController.findAllUserTask(user1);
-
-//        User user2 = new User(0L,
-//                                "Evgeniy",
-//                                "Ostapenko",
-//                                "evgeniy@ru",
-//                                "89111750068",
-//                                "password",
-//                                "");
-//
     }
 }

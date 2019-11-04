@@ -20,9 +20,4 @@ public class User {
     private String   subscription;
     private UserRole userRole;
 
-//    {
-//        subscription = "Not subscribed user";
-//        userRole = UserRole.ORDINARY_USER;
-//    }
-
 }

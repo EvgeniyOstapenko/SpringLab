@@ -4,10 +4,10 @@ import com.epam.labSpringProject.model.User;
 
 public interface UserRepository {
 
-    User saveUser(User user);
+    User save(User user);
 
-    User findUserByEmail(String email);
+    User findByEmail(String email);
 
-    User getUserById(Long id);
+    User getById(Long id);
 
 }

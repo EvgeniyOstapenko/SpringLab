@@ -4,11 +4,11 @@ import com.epam.labSpringProject.exception.EmailAlreadyExistException;
 import com.epam.labSpringProject.exception.UserNotFoundException;
 import com.epam.labSpringProject.exception.WrongPasswordException;
 import com.epam.labSpringProject.model.User;
-import com.epam.labSpringProject.repository.UserRepository;
+import com.epam.labSpringProject.repository.*;
 import com.epam.security_module.SecurityService;
 import com.epam.security_module.UnauthorizedAccessAttemptException;
 import org.apache.commons.codec.digest.DigestUtils;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.*;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 
@@ -17,20 +17,21 @@ import java.util.NoSuchElementException;
 @Service
 public class UserServiceImpl implements UserService {
 
-    private final UserRepository userRepository;
+//    @Qualifier("jdbcUserRepositoryImpl")
+    private final JdbcUserRepositoryImpl jdbcUserRepositoryImpl;
     private final String KEY = "secret";
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserServiceImpl(JdbcUserRepositoryImpl userRepository) {
+        this.jdbcUserRepositoryImpl = userRepository;
     }
 
     @Override
     public User toRegister(User currentUser) {
-        if (userRepository.findUserByEmail(currentUser.getEmail()) != null)
-            throw new EmailAlreadyExistException("This email is already in use");
+//        if (jdbcUserRepositoryImpl.findByEmail(currentUser.getEmail()) != null)
+//            throw new EmailAlreadyExistException("This email is already in use");
 
-        userRepository.saveUser(currentUser);
+        jdbcUserRepositoryImpl.save(currentUser);
         System.out.println(currentUser.toString() + " has successfully signed up!");
         return currentUser;
     }
@@ -39,7 +40,7 @@ public class UserServiceImpl implements UserService {
     public User toEnter(User currentUser) {
         User user;
         try {
-            user = userRepository.findUserByEmail(currentUser.getEmail());
+            user = jdbcUserRepositoryImpl.findByEmail(currentUser.getEmail());
         } catch (NoSuchElementException e) {
             throw new UserNotFoundException("Wrong email");
         }
@@ -53,14 +54,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void subscribe(User currentUser) {
-        User user = userRepository.findUserByEmail(currentUser.getEmail());
+        User user = jdbcUserRepositoryImpl.findByEmail(currentUser.getEmail());
         String generatedKey = DigestUtils.md5Hex(KEY);
         user.setSubscription(generatedKey);
     }
 
     @Override
     public User getUserByUserId(Long userId) {
-        return userRepository.getUserById(userId);
+        return jdbcUserRepositoryImpl.getById(userId);
     }
 
     @Override

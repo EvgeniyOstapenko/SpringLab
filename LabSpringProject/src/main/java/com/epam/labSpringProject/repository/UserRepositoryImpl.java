@@ -18,13 +18,13 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public User saveUser(User user) {
+    public User save(User user) {
         myDataBase.getUsersTable().add(idAutoIncrement(user));
         return user;
     }
 
     @Override
-    public User findUserByEmail(String email) {
+    public User findByEmail(String email) {
         return myDataBase.getUsersTable().stream()
                         .filter(user -> email.equals(user.getEmail()))
                         .findAny().orElse(null);
@@ -32,7 +32,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     //TODO to throw error "such user doesn't exist
     @Override
-    public User getUserById(Long id) {
+    public User getById(Long id) {
         return myDataBase.getUsersTable().stream()
                 .filter(user -> id.equals(user.getId()))
                 .findFirst().orElse(null);
