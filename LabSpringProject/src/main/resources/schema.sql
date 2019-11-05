@@ -16,6 +16,6 @@ CREATE TABLE TASKS (
     description varchar(255),
     isDone varchar(8),
     taskPriority varchar(255),
-    userId long
---    FOREIGN KEY (userId) REFERENCES USERS(id)
+    userId long,
+    FOREIGN KEY (userId) REFERENCES USERS(id)
 );
