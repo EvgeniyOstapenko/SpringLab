@@ -36,15 +36,16 @@ public class Application {
         userController.singUp(user1);
         System.out.println(userController.findById(1l));
         System.out.println(userController.findById(2l));
+        User user2 = userController.findById(2l);
 //        System.out.println(user1.getId());
 
 //        userController.getSubscription(user1);
 
-        Task task1 = taskController.createNewTask(new Task(0L, "firstTask", false, TaskPriority.MEDIUM, 2L));
+        Task task1 = taskController.createNewTask(new Task(0L, "firstTask", false, TaskPriority.MEDIUM, user2.getId()));
 //        taskController.createNewTask(new Task(0L, "secondTask", false, TaskPriority.MEDIUM, user1.getId()));
-//        System.out.println(taskController.getAllUserTasks(user1));
 //        System.out.println(task1.getUserId());
         System.out.println(taskController.getAllTasks());
+        System.out.println(taskController.getAllUserTasks(user2));
 
 //        taskController.createNewTask(new Task(0L, "secondTask", false, TaskPriority.MEDIUM, user1.getId()));
 //        taskController.createNewTask(new Task(0L, "thirdTask", false, TaskPriority.MEDIUM, user1.getId()));

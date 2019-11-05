@@ -16,7 +16,7 @@ public class JdbcTaskRepositoryImpl implements TaskRepository {
     private String INSERT = "insert into TASKS (description, isDone, taskPriority, userId) values(?,?,?,?)";
     private String GET_BY_ID = "select id, name, surname, email, number, password,"
             + " subscription, userRole from TASKS where email=?";
-    private String GET_BY_USER_ID = "select id, description, isDone, taskPriority, userId from TASKS where id=?";
+    private String GET_BY_USER_ID = "select id, description, isDone, taskPriority, userId from TASKS where userId=?";
     private String GET_ALL = "select * from TASKS";
 
 

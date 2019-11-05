@@ -1,4 +1,6 @@
+DROP TABLE IF EXISTS TASKS;
 DROP TABLE IF EXISTS USERS;
+
 CREATE TABLE USERS (
     id long PRIMARY KEY AUTO_INCREMENT,
     name varchar(255),
@@ -10,7 +12,6 @@ CREATE TABLE USERS (
     userRole varchar(255)
 );
 
-DROP TABLE IF EXISTS TASKS;
 CREATE TABLE TASKS (
     id long PRIMARY KEY AUTO_INCREMENT,
     description varchar(255),
@@ -19,3 +20,4 @@ CREATE TABLE TASKS (
     userId long,
     FOREIGN KEY (userId) REFERENCES USERS(id)
 );
+
