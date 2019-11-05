@@ -14,11 +14,6 @@ public class TaskRowMapper implements RowMapper<Task> {
         Long id = resultSet.getLong("id");
         String description = resultSet.getString("description");
         boolean isDone = resultSet.getBoolean("isDone");
-
-        System.out.println("---------");
-        System.out.println(resultSet.getString("taskPriority"));
-
-
         TaskPriority taskPriority = TaskPriority.valueOf(resultSet.getString("taskPriority"));
         Long userId = resultSet.getLong("userId");
 

@@ -40,9 +40,10 @@ public class Application {
 
 //        userController.getSubscription(user1);
 
-        taskController.createNewTask(new Task(0L, "firstTask", false, TaskPriority.MEDIUM, 1l));
+        Task task1 = taskController.createNewTask(new Task(0L, "firstTask", false, TaskPriority.MEDIUM, 2l));
 //        taskController.createNewTask(new Task(0L, "secondTask", false, TaskPriority.MEDIUM, user1.getId()));
 //        System.out.println(taskController.getAllUserTasks(user1));
+        System.out.println(task1.getId());
         System.out.println(taskController.getAllTasks());
 
 //        taskController.createNewTask(new Task(0L, "secondTask", false, TaskPriority.MEDIUM, user1.getId()));
