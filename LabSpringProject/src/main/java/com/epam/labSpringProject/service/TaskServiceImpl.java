@@ -21,9 +21,6 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public Task createTask(Task task) {
         Task createdTask = taskRepository.save(task);
-
-        //TODO add checking task
-        System.out.println("A new task has been created: " + createdTask);
         return createdTask;
     }
 
@@ -38,8 +35,13 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public List<Task> findAllUserTasks(User user) {
+    public List<Task> getAllUserTasks(User user) {
         return taskRepository.getByUserId(user.getId());
+    }
+
+    @Override
+    public List<Task> getAllTasks() {
+        return taskRepository.getAll();
     }
 
     @Override

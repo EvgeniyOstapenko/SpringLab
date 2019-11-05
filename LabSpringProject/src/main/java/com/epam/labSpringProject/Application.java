@@ -5,13 +5,9 @@ import com.epam.labSpringProject.controller.TaskController;
 import com.epam.labSpringProject.controller.UserController;
 import com.epam.labSpringProject.model.Task;
 import com.epam.labSpringProject.model.User;
-import com.epam.labSpringProject.repository.*;
 import com.epam.labSpringProject.utility.TaskPriority;
 import com.epam.labSpringProject.utility.UserRole;
-import com.epam.security_module.SecurityService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Application {
 
@@ -44,8 +40,10 @@ public class Application {
 
 //        userController.getSubscription(user1);
 
-        taskController.createNewTask(new Task(0L, "firstTask", false, TaskPriority.MEDIUM, user1.getId()));
-//        System.out.println(taskController.findAllUserTask(1l));
+        taskController.createNewTask(new Task(0L, "firstTask", false, TaskPriority.MEDIUM, 1l));
+//        taskController.createNewTask(new Task(0L, "secondTask", false, TaskPriority.MEDIUM, user1.getId()));
+//        System.out.println(taskController.getAllUserTasks(user1));
+        System.out.println(taskController.getAllTasks());
 
 //        taskController.createNewTask(new Task(0L, "secondTask", false, TaskPriority.MEDIUM, user1.getId()));
 //        taskController.createNewTask(new Task(0L, "thirdTask", false, TaskPriority.MEDIUM, user1.getId()));

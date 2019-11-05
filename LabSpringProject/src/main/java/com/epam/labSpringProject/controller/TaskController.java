@@ -26,8 +26,12 @@ public class TaskController {
         taskService.deleteTask(task);
     }
 
-    public List<Task> findAllUserTask(User user) {
-        return taskService.findAllUserTasks(user);
+    public List<Task> getAllUserTasks(User user) {
+        return taskService.getAllUserTasks(user);
+    }
+
+    public List<Task> getAllTasks() {
+        return taskService.getAllTasks();
     }
 
     public void markTaskComplete(Task task) {

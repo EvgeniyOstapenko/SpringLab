@@ -5,11 +5,9 @@ import com.epam.labSpringProject.model.Task;
 import com.epam.labSpringProject.model.User;
 import com.epam.labSpringProject.service.TaskService;
 import com.epam.labSpringProject.service.UserService;
-import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 
 //@Aspect
@@ -37,7 +35,7 @@ public class SubscriptionsVerification{
         if(user.getSubscription().equals(IS_SUBSCRIBED)) {
            return;
         }
-        if(taskService.findAllUserTasks(user).size() >= MAX_TASKS) {
+        if(taskService.getAllUserTasks(user).size() >= MAX_TASKS) {
             throw new UnsubscribedUserException("Unsubscribed usage is limited to ten tasks!");
         }
     }

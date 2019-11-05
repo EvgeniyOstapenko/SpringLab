@@ -11,9 +11,9 @@ import lombok.*;
 @ToString
 @Builder
 public class Task{
-     private Long    id;
-     private String  description;
-     private boolean isDone;
-     private TaskPriority priority;
-     private Long    userId;
+     private Long         id;
+     private String       description;
+     private boolean      isDone;
+     private TaskPriority taskPriority;
+     private Long         userId;
 }

@@ -1,27 +1,33 @@
 package com.epam.labSpringProject.repository;
 
-import com.epam.labSpringProject.model.*;
-import com.epam.labSpringProject.utility.*;
-import org.springframework.jdbc.core.*;
+import com.epam.labSpringProject.model.Task;
+import com.epam.labSpringProject.utility.TaskPriority;
+import org.springframework.jdbc.core.RowMapper;
 
-import java.sql.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class TaskRowMapper implements RowMapper<Task> {
 
     @Override
-    public Task mapRow(ResultSet rs, int rowNum) throws SQLException {
-        Long id = rs.getLong("id");
-        String description = rs.getString("description");
-        boolean isDone = rs.getBoolean("isDone");
-        TaskPriority priority = TaskPriority.valueOf(rs.getString("priority"));
-        Long userId = rs.getLong("userId");
+    public Task mapRow(ResultSet resultSet, int rowNum) throws SQLException {
+        Long id = resultSet.getLong("id");
+        String description = resultSet.getString("description");
+        boolean isDone = resultSet.getBoolean("isDone");
+
+        System.out.println("---------");
+        System.out.println(resultSet.getString("taskPriority"));
+
+
+        TaskPriority taskPriority = TaskPriority.valueOf(resultSet.getString("taskPriority"));
+        Long userId = resultSet.getLong("userId");
 
 
         return Task.builder()
                 .id(id)
                 .description(description)
                 .isDone(isDone)
-                .priority(priority)
+                .taskPriority(taskPriority)
                 .userId(userId)
                 .build();
     }

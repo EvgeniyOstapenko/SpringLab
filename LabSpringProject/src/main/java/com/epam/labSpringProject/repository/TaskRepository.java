@@ -14,6 +14,8 @@ public interface TaskRepository {
 
     List<Task> getByUserId(Long userId);
 
+    List<Task> getAll();
+
     Task update(Task task);
 
 }
