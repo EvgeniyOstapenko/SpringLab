@@ -43,6 +43,7 @@ public class JdbcUserRepositoryImpl implements UserRepository {
         return jdbcTemplate.queryForObject(GET_BY_ID, new UserRowMapper(), id);
     }
 
+    @Override
     public List<User> findAll() {
         return jdbcTemplate.query("select * from users", new UserRowMapper());
     }

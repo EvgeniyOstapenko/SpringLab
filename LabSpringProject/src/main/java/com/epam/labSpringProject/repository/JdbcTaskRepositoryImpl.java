@@ -28,7 +28,7 @@ public class JdbcTaskRepositoryImpl implements TaskRepository {
 
     @Override
     public Task save(Task task) {
-        jdbcTemplate.update(INSERT, task.getDescription(), task.isDone(), task.getTaskPriority().name(), task.getId());
+        jdbcTemplate.update(INSERT, task.getDescription(), task.isDone(), task.getTaskPriority().name(), task.getUserId());
         return task;
     }
 
