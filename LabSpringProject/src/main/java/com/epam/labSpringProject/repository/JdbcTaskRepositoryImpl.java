@@ -1,12 +1,11 @@
 package com.epam.labSpringProject.repository;
 
-import com.epam.labSpringProject.model.*;
-import com.epam.labSpringProject.utility.*;
-import org.springframework.beans.factory.annotation.*;
-import org.springframework.jdbc.core.*;
-import org.springframework.stereotype.*;
+import com.epam.labSpringProject.model.Task;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
-import java.util.*;
+import java.util.List;
 
 @Repository
 public class JdbcTaskRepositoryImpl implements TaskRepository {
