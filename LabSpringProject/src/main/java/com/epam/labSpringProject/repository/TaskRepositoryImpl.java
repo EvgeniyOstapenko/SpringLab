@@ -19,21 +19,21 @@ public class TaskRepositoryImpl implements TaskRepository {
     }
 
     @Override
-    public Task saveTask(Task task) {
+    public Task save(Task task) {
         myDataBase.getTasksTable().add(idAutoIncrement(task));
         return task;
     }
 
     //TODO throws TaskNotExistException
     @Override
-    public Task getTaskById(Long taskId) {
+    public Task getById(Long taskId) {
         return  myDataBase.getTasksTable().stream()
                 .filter(task -> (taskId.equals(task.getId())))
                 .findFirst().orElse(null);
     }
 
     @Override
-    public void deleteTaskById(Long taskId) {
+    public void deleteById(Long taskId) {
         myDataBase.getTasksTable()
                 .remove(myDataBase.getTasksTable()
                                 .stream()
@@ -42,7 +42,7 @@ public class TaskRepositoryImpl implements TaskRepository {
     }
 
     @Override
-    public List<Task> findTasksByUserId(Long userId) {
+    public List<Task> getByUserId(Long userId) {
         return  myDataBase.getTasksTable()
                         .stream()
                         .filter(task -> task.getUserId().equals(userId)) // return only one element!
@@ -50,7 +50,7 @@ public class TaskRepositoryImpl implements TaskRepository {
     }
 
     @Override
-    public Task updateTask(Task updatedTask) {
+    public Task update(Task updatedTask) {
         myDataBase.getTasksTable().removeIf(task -> task.getId().equals(updatedTask.getId()));
         myDataBase.getTasksTable().add(updatedTask);
         return updatedTask;

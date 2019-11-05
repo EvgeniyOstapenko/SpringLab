@@ -20,7 +20,7 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public Task createTask(Task task) {
-        Task createdTask = taskRepository.saveTask(task);
+        Task createdTask = taskRepository.save(task);
 
         //TODO add checking task
         System.out.println("A new task has been created: " + createdTask);
@@ -30,7 +30,7 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public void deleteTask(Task task) throws RuntimeException{
         try {
-            taskRepository.deleteTaskById(task.getId());
+            taskRepository.deleteById(task.getId());
         }catch (RuntimeException e){
             System.out.println(e.getMessage()); //"No task with such ID found!"
         }
@@ -39,13 +39,13 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public List<Task> findAllUserTasks(User user) {
-        return taskRepository.findTasksByUserId(user.getId());
+        return taskRepository.getByUserId(user.getId());
     }
 
     @Override
     public Task setState(Task task, boolean state) {
-        Task currentTask = taskRepository.getTaskById(task.getId());
+        Task currentTask = taskRepository.getById(task.getId());
         currentTask.setDone(state);
-        return taskRepository.updateTask(currentTask);
+        return taskRepository.update(currentTask);
     }
 }

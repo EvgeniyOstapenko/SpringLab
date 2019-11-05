@@ -2,7 +2,7 @@ package com.epam.labSpringProject.repository;
 
 import com.epam.labSpringProject.model.*;
 import com.epam.labSpringProject.utility.*;
-import org.springframework.jdbc.core.*;
+import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.*;
 

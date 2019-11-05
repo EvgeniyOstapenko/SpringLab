@@ -16,8 +16,7 @@ public class JdbcTaskRepositoryImpl implements TaskRepository {
     private String INSERT = "insert into TASKS (description, isDone, priority, userId) values(?,?,?,?)";
     private String GET_BY_ID = "select id, name, surname, email, number, password,"
             + " subscription, userRole from TASKS where email=?";
-    private String GET_BY_USER_ID = "select id, name, surname, email, number, password,"
-            + " subscription, userRole from TASKS where id=?";
+    private String GET_BY_USER_ID = "select id, description, isDone, priority, userId from TASKS where id=?";
     private String GET_ALL = "update TASKS set subscription=? where email=?";
 
     private Long id;
@@ -33,28 +32,29 @@ public class JdbcTaskRepositoryImpl implements TaskRepository {
 
 
     @Override
-    public Task saveTask(Task task) {
+    public Task save(Task task) {
         jdbcTemplate.update(INSERT, task.getDescription(), task.isDone(), task.getPriority(), task.getId());
         return task;
     }
 
     @Override
-    public Task getTaskById(Long taskId) {
+    public Task getById(Long taskId) {
         return null;
     }
 
     @Override
-    public void deleteTaskById(Long taskId) {
+    public void deleteById(Long taskId) {
 
     }
 
     @Override
-    public List<Task> findTasksByUserId(Long userId) {
+    public List<Task> getByUserId(Long userId) {
+        jdbcTemplate.query(GET_BY_USER_ID, new TaskRowMapper(), userId);
         return null;
     }
 
     @Override
-    public Task updateTask(Task task) {
+    public Task update(Task task) {
         return null;
     }
 }

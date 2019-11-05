@@ -15,7 +15,7 @@ CREATE TABLE TASKS (
     id long PRIMARY KEY AUTO_INCREMENT,
     description varchar(255),
     isDone varchar(8),
-    PRIORITY varchar(255),
-    userId varchar(255)
---    FOREIGN KEY (`userId`) REFERENCES USERS(`id`)
+    priority varchar(255),
+    userId long
+--    FOREIGN KEY (userId) REFERENCES USERS(id)
 );
