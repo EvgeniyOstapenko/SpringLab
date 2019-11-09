@@ -62,5 +62,6 @@ public class Application {
 //        user1.setUserRole(UserRole.ADMIN);
 //        userController.isAdminAuthority(user1);
 
+
     }
 }
