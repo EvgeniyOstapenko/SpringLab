@@ -5,9 +5,13 @@ import com.epam.labSpringProject.service.UserService;
 import com.epam.security_module.SecurityService;
 import com.epam.security_module.UnauthorizedAccessAttemptException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CurrencyEditor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.*;
 
-@Component
+@RestController
+@RequestMapping("/user")
 public class UserController {
 
     private final UserService userService;
@@ -33,8 +37,10 @@ public class UserController {
         userService.isAdminAuthority(user);
     }
 
-    public User findById(Long id){
-        return userService.getById(id);
+    @GetMapping("/{id}")
+    public User findById(@PathVariable("id") Long id){
+        User user = userService.getById(id);
+        return user;
     }
 
 

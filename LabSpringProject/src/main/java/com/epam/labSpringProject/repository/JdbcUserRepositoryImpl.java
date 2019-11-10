@@ -1,6 +1,7 @@
 package com.epam.labSpringProject.repository;
 
 import com.epam.labSpringProject.model.*;
+import org.h2.util.json.JSONItemType;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.jdbc.core.*;
 import org.springframework.stereotype.*;
@@ -40,7 +41,9 @@ public class JdbcUserRepositoryImpl implements UserRepository {
 
     @Override
     public User getById(Long id) {
-        return jdbcTemplate.queryForObject(GET_BY_ID, new UserRowMapper(), id);
+        User user =  jdbcTemplate.queryForObject(GET_BY_ID, new UserRowMapper(), id);
+        System.out.println(user);
+        return user;
     }
 
     @Override

@@ -29,7 +29,7 @@
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.2</version>
                 <configuration>
-                    <port>8880</port>
+                    <port>8881</port>
                     <server>TomcatServer</server>
                     <path>/</path>
                     <ignorePackaging>true</ignorePackaging>
@@ -123,7 +123,14 @@
             <artifactId>spring-webmvc</artifactId>
             <version>5.2.1.RELEASE</version>
         </dependency>
-    </dependencies>
 
+        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.9.4</version>
+        </dependency>
+
+    </dependencies>
 
 </project>

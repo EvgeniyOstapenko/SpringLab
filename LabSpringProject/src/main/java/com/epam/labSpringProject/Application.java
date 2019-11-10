@@ -47,6 +47,10 @@ public class Application {
         System.out.println(taskController.getAllTasks());
         System.out.println(taskController.getAllUserTasks(user2));
 
+        System.out.println("----------");
+        System.out.println(userController.findById(1L));
+        System.out.println(userController.findById(1L));
+
 
 //        taskController.createNewTask(new Task(0L, "secondTask", false, TaskPriority.MEDIUM, user1.getId()));
 //        taskController.createNewTask(new Task(0L, "thirdTask", false, TaskPriority.MEDIUM, user1.getId()));
