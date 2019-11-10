@@ -47,6 +47,7 @@ public class Application {
         System.out.println(taskController.getAllTasks());
         System.out.println(taskController.getAllUserTasks(user2));
 
+
 //        taskController.createNewTask(new Task(0L, "secondTask", false, TaskPriority.MEDIUM, user1.getId()));
 //        taskController.createNewTask(new Task(0L, "thirdTask", false, TaskPriority.MEDIUM, user1.getId()));
 //        taskController.createNewTask(new Task(0L, "forthTask", false, TaskPriority.MEDIUM, user1.getId()));

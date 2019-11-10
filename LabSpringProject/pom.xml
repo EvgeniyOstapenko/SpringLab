@@ -10,6 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>LabSpringProject</artifactId>
     <name>LabSpringProject</name>
+    <packaging>jar</packaging>
 
     <!--it creates a jar-->
     <build>
@@ -28,7 +29,7 @@
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.2</version>
                 <configuration>
-                    <port>8888</port>
+                    <port>8880</port>
                     <server>TomcatServer</server>
                     <path>/</path>
                     <ignorePackaging>true</ignorePackaging>
@@ -69,6 +70,16 @@
             <artifactId>lombok</artifactId>
             <version>1.18.10</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.18</version>
+            <scope>provided</scope>
+        </dependency>
+
+
 
         <!-- for encoding and decoding secret-->
         <dependency>

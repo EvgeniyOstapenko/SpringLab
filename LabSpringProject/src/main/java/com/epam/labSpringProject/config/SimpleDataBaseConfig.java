@@ -11,7 +11,7 @@ import org.springframework.jdbc.datasource.init.*;
 import javax.sql.*;
 
 @Configuration
-@PropertySource("db.properties")
+@PropertySource(value = "file:/Users/Evgeniy/Documents/GitHub/SpringLab/LabSpringProject/src/main/resources/db.properties")
 @ComponentScan("com.epam.labSpringProject")
 public class SimpleDataBaseConfig {
 
@@ -21,9 +21,9 @@ public class SimpleDataBaseConfig {
     private String user;
     @Value("${password}")
     private String password;
-    @Value("schema.sql")
+    @Value("file:/Users/Evgeniy/Documents/GitHub/SpringLab/LabSpringProject/src/main/resources/schema.sql")
     private Resource schemaScript;
-    @Value("population_script.sql")
+    @Value("file:/Users/Evgeniy/Documents/GitHub/SpringLab/LabSpringProject/src/main/resources/population_script.sql")
     private Resource population_script;
 
     @Bean
@@ -47,7 +47,7 @@ public class SimpleDataBaseConfig {
     private DatabasePopulator databasePopulator() {
         ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
         populator.addScript(schemaScript);
-//        populator.addScript(population_script);
+        populator.addScript(population_script);
         return populator;
     }
 
