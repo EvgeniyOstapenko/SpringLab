@@ -1,5 +1,6 @@
 package com.epam.labSpringProject.repository;
 
+import com.epam.labSpringProject.model.Task;
 import com.epam.labSpringProject.model.User;
 
 import java.util.List;
@@ -13,5 +14,7 @@ public interface UserRepository {
     User getById(Long id);
 
     List<User> findAll();
+
+    List<Task> getAllTasksByUserId(Long id);
 
 }

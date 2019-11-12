@@ -37,7 +37,7 @@ public class SubscriptionsVerification{
         if(user.getSubscription().equals(IS_SUBSCRIBED)) {
            return;
         }
-        if(taskService.getAllUserTasks(user).size() >= MAX_TASKS) {
+        if(userService.getAllUserTasks(user).size() >= MAX_TASKS) {
             throw new UnsubscribedUserException("Unsubscribed usage is limited to ten tasks!");
         }
     }

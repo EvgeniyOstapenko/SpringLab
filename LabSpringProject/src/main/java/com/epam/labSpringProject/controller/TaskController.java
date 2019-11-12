@@ -20,38 +20,34 @@ public class TaskController {
         this.taskService = taskService;
     }
 
-    @PostMapping("/create")
+    @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     public Task createNewTask(Task task) {
         return taskService.createTask(task);
     }
 
-    @DeleteMapping("/delete")
-    @ResponseStatus(HttpStatus.OK)
+    @DeleteMapping
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteTask(Task task) {
         taskService.deleteTask(task);
     }
 
     @GetMapping()
-    @ResponseStatus(HttpStatus.OK)
-    public List<Task> getAllUserTasks(User user) {
-        return taskService.getAllUserTasks(user);
-    }
-
-    @DeleteMapping("/delete")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public List<Task> getAllTasks() {
         return taskService.getAllTasks();
     }
 
     @PutMapping("/{taskId}/complete")
-    public void markTaskComplete(Task task) {
+    public Task markTaskComplete(Task task) {
         taskService.setState(task, true);
+        return task;
     }
 
     @PutMapping("/{taskId}/not-complete")
-    public void markTaskNotComplete(Task task) {
+    public Task markTaskNotComplete(Task task) {
         taskService.setState(task, false);
+        return task;
     }
 
 }

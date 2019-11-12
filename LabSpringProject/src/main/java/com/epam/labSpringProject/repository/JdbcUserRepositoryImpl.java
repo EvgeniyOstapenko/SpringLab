@@ -39,6 +39,7 @@ public class JdbcUserRepositoryImpl implements UserRepository {
         return jdbcTemplate.queryForObject(GET_BY_EMAIL, new UserRowMapper(), email);
     }
 
+
     @Override
     public User getById(Long id) {
         User user =  jdbcTemplate.queryForObject(GET_BY_ID, new UserRowMapper(), id);
@@ -49,5 +50,10 @@ public class JdbcUserRepositoryImpl implements UserRepository {
     @Override
     public List<User> findAll() {
         return jdbcTemplate.query("select * from users", new UserRowMapper());
+    }
+
+    @Override
+    public List<Task> getAllTasksByUserId(Long id) {
+        return null;
     }
 }

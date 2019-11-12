@@ -1,10 +1,13 @@
 package com.epam.labSpringProject.controller;
 
+import com.epam.labSpringProject.model.Task;
 import com.epam.labSpringProject.model.User;
 import com.epam.labSpringProject.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/user")
@@ -43,7 +46,13 @@ public class UserController {
         userService.isAdminAuthority(user);
     }
 
-    @GetMapping("/{id}/getUser")
+    @GetMapping("/tasks")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Task> getAllUserTasks(User user) {
+        return userService.getAllUserTasks(user);
+    }
+
+    @GetMapping("/{id}")
     public String findUser(@PathVariable("id") Long id) {
         User user = userService.getById(id);
         return user.toString();

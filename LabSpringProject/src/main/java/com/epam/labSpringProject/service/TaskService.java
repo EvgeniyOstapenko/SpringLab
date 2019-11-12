@@ -11,8 +11,6 @@ public interface TaskService {
 
     void deleteTask(Task task);
 
-    List<Task> getAllUserTasks(User user);
-
     List<Task> getAllTasks();
 
     Task setState(Task task, boolean state);
