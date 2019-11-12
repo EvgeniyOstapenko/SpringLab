@@ -1,7 +1,6 @@
 package com.epam.labSpringProject.config;
 
 import com.epam.labSpringProject.controller.UserController;
-import com.epam.labSpringProject.repository.UserRepository;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
@@ -26,7 +25,7 @@ public class WebApplicationConfig implements WebApplicationInitializer{
 
         context.refresh();
         UserController userController = context.getBean(UserController.class);
-        System.out.println(userController.findById(1L));
+        userController.findUser(1L);
 
     }
 }

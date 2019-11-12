@@ -25,6 +25,8 @@ public class SimpleDataBaseConfig {
     private Resource schemaScript;
     @Value("file:/Users/Evgeniy/Documents/GitHub/SpringLab/LabSpringProject/src/main/resources/population_script.sql")
     private Resource population_script;
+    @Value("file:/Users/Evgeniy/Documents/GitHub/SpringLab/LabSpringProject/src/main/resources/migration.sql")
+    private Resource migration_script;
 
     @Bean
     DataSource dataSource() {
@@ -48,6 +50,7 @@ public class SimpleDataBaseConfig {
         ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
         populator.addScript(schemaScript);
         populator.addScript(population_script);
+        populator.addScript(migration_script);
         return populator;
     }
 

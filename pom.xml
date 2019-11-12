@@ -10,7 +10,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <module>security_module</module>
+        <module>Security_module</module>
         <module>LabSpringProject</module>
     </modules>
 

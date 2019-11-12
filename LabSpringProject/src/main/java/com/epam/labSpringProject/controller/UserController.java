@@ -2,12 +2,8 @@ package com.epam.labSpringProject.controller;
 
 import com.epam.labSpringProject.model.User;
 import com.epam.labSpringProject.service.UserService;
-import com.epam.security_module.SecurityService;
-import com.epam.security_module.UnauthorizedAccessAttemptException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.CurrencyEditor;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -21,26 +17,36 @@ public class UserController {
         this.userService = userService;
     }
 
+    @PostMapping("/singUp")
+    @ResponseStatus(HttpStatus.CREATED)
     public User singUp(User user) {
         return userService.toRegister(user);
     }
 
+    @GetMapping("/singIn")
+    @ResponseStatus(HttpStatus.OK)
     public User singIn(User user) {
-        return  userService.toEnter(user);
+        return userService.toEnter(user);
     }
 
-    public void getSubscription(User user){
+
+    @PutMapping("/getSubscription")
+    @ResponseStatus(HttpStatus.OK)
+    public User getSubscription(User user) {
         userService.subscribe(user);
+        return user;
     }
 
+    @GetMapping("/isAdmin")
+    @ResponseStatus(HttpStatus.OK)
     public void isAdminAuthority(User user) {
         userService.isAdminAuthority(user);
     }
 
-    @GetMapping("/{id}")
-    public User findById(@PathVariable("id") Long id){
+    @GetMapping("/{id}/getUser")
+    public String findUser(@PathVariable("id") Long id) {
         User user = userService.getById(id);
-        return user;
+        return user.toString();
     }
 
 
