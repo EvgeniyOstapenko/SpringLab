@@ -20,33 +20,33 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping("/singUp")
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public User singUp(User user) {
         return userService.toRegister(user);
     }
 
-    @GetMapping("/singIn")
+    @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public User singIn(User user) {
         return userService.toEnter(user);
     }
 
 
-    @PutMapping("/getSubscription")
+    @PutMapping("/{userId}/getSubscription")
     @ResponseStatus(HttpStatus.OK)
     public User getSubscription(User user) {
         userService.subscribe(user);
         return user;
     }
 
-    @GetMapping("/isAdmin")
+    @GetMapping("/{userId}/isAdmin")
     @ResponseStatus(HttpStatus.OK)
     public void isAdminAuthority(User user) {
         userService.isAdminAuthority(user);
     }
 
-    @GetMapping("/tasks")
+    @GetMapping("/{userId}/tasks")
     @ResponseStatus(HttpStatus.OK)
     public List<Task> getAllUserTasks(User user) {
         return userService.getAllUserTasks(user);
