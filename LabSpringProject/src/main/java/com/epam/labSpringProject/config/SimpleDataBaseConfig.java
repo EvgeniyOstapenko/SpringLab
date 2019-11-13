@@ -1,14 +1,19 @@
 package com.epam.labSpringProject.config;
 
-import org.h2.*;
-import org.springframework.beans.factory.annotation.*;
-import org.springframework.context.annotation.*;
-import org.springframework.core.io.*;
-import org.springframework.jdbc.core.*;
-import org.springframework.jdbc.datasource.*;
-import org.springframework.jdbc.datasource.init.*;
+import org.h2.Driver;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.io.Resource;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.SimpleDriverDataSource;
+import org.springframework.jdbc.datasource.init.DataSourceInitializer;
+import org.springframework.jdbc.datasource.init.DatabasePopulator;
+import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 
-import javax.sql.*;
+import javax.sql.DataSource;
 
 @Configuration
 @PropertySource(value = "file:/Users/Evgeniy/Documents/GitHub/SpringLab/LabSpringProject/src/main/resources/db.properties")
