@@ -3,8 +3,6 @@ package com.epam.labSpringProject.service;
 
 import com.epam.labSpringProject.model.Task;
 import com.epam.labSpringProject.model.User;
-import com.epam.security_module.SecurityService;
-import com.epam.security_module.UnauthorizedAccessAttemptException;
 
 import java.util.List;
 

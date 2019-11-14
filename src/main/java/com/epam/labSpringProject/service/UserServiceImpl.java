@@ -1,14 +1,12 @@
 package com.epam.labSpringProject.service;
 
-import com.epam.labSpringProject.exception.*;
+import com.epam.labSpringProject.exception.UserNotFoundException;
+import com.epam.labSpringProject.exception.WrongPasswordException;
 import com.epam.labSpringProject.model.Task;
 import com.epam.labSpringProject.model.User;
-import com.epam.labSpringProject.repository.*;
-import com.epam.security_module.SecurityService;
-import com.epam.security_module.UnauthorizedAccessAttemptException;
+import com.epam.labSpringProject.repository.JdbcUserRepositoryImpl;
 import org.apache.commons.codec.digest.DigestUtils;
-import org.springframework.beans.factory.annotation.*;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -57,6 +55,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void isAdminAuthority(User user) {
+
+    }
+
+    @Override
     public void subscribe(User currentUser) {
         User user = userRepository.getByEmail(currentUser.getEmail());
         String generatedKey = DigestUtils.md5Hex(KEY);
@@ -68,21 +71,21 @@ public class UserServiceImpl implements UserService {
         return userRepository.getById(userId);
     }
 
-    @Override
-    public void isAdminAuthority(User user) {
-        SecurityService service = getSecurityService();
-        try {
-            service.isValidUserRole(user.getUserRole());
-            System.out.println("Welcome admin.");
-        } catch (UnauthorizedAccessAttemptException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private SecurityService getSecurityService() {
-        ClassPathXmlApplicationContext xmlContext =
-                new ClassPathXmlApplicationContext("spring-config.xml");
-        xmlContext.refresh();
-        return xmlContext.getBean(SecurityService.class);
-    }
+//    @Override
+//    public void isAdminAuthority(User user) {
+//        SecurityService service = getSecurityService();
+//        try {
+//            service.isValidUserRole(user.getUserRole());
+//            System.out.println("Welcome admin.");
+//        } catch (UnauthorizedAccessAttemptException e) {
+//            e.printStackTrace();
+//        }
+//    }
+//
+//    private SecurityService getSecurityService() {
+//        ClassPathXmlApplicationContext xmlContext =
+//                new ClassPathXmlApplicationContext("spring-config.xml");
+//        xmlContext.refresh();
+//        return xmlContext.getBean(SecurityService.class);
+//    }
 }
