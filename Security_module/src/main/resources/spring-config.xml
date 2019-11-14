@@ -9,5 +9,4 @@
         <constructor-arg name="securityStorage" ref="securityStorageBean"/>
     </bean>
 
-
 </beans>

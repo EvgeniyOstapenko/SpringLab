@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user")
 public class UserController {
 
     private final UserService userService;
@@ -20,13 +19,13 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping
+    @PostMapping("/user")
     @ResponseStatus(HttpStatus.CREATED)
     public User singUp(User user) {
         return userService.toRegister(user);
     }
 
-    @GetMapping
+    @GetMapping("/user")
     @ResponseStatus(HttpStatus.OK)
     public User singIn(User user) {
         return userService.toEnter(user);

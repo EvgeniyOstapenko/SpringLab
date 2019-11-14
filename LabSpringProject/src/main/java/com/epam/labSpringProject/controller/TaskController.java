@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/task")
 public class TaskController {
 
     private final TaskService taskService;
@@ -20,19 +19,24 @@ public class TaskController {
         this.taskService = taskService;
     }
 
-    @PostMapping()
+    @GetMapping("/hello")
+    public String welcome() {
+        return "welcome";
+    }
+
+    @PostMapping("/task")
     @ResponseStatus(HttpStatus.CREATED)
     public Task createNewTask(Task task) {
         return taskService.createTask(task);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/task")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteTask(Task task) {
         taskService.deleteTask(task);
     }
 
-    @GetMapping()
+    @GetMapping("/task")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public List<Task> getAllTasks() {
         return taskService.getAllTasks();

@@ -17,7 +17,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @PropertySource(value = "file:/Users/Evgeniy/Documents/GitHub/SpringLab/LabSpringProject/src/main/resources/db.properties")
-@ComponentScan("com.epam.labSpringProject")
+//@ComponentScan("com.epam.labSpringProject")
 public class SimpleDataBaseConfig {
 
     @Value("${url}")
